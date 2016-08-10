@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ashui</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="edit/css/wangEditor.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+        ul.nav-tabs{
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        #div1 {
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only pull-left">阿水姑娘 我们的舞台 我们的时代</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">阿水头条 今天你是头条么</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">阿水头条</a></li>
+                <li><a href="rigister.html">阿水广场</a></li>
+                <li><a href="rigister.html">阿水相遇</a></li>
+                <li><a href="rigister.html">阿水分享</a></li>
+                <li><a href="rigister.html">我的阿水</a></li>
+                <li><a href="rigister.html">阿水服务</a></li>
+                <li><a href="login.html">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="col-xs-3" class="pull-left" style="margin-top: 100px;width: 100px;z-index: 100;position: fixed">
+    <ul class="nav nav-tabs nav-stacked" >
+        <li ><a href="#section-1">发表</a></li>
+        <li><a href="#section-2">我的留言板</a></li>
+        <li><a href="my_ziliao.html">修改资料</a></li>
+    </ul>
+</div>
+
+<!--<div class="pull-right"  style="width:20px;color: #2aabd2;">-->
+    <!--<h2>我是竖列排版</h2>-->
+<!--</div>-->
+
+<div class="clearfix"></div>
+<div class="container">
+    <div class="starter-template">
+        <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
+            <article>
+                <form>
+                    <div class="form-group">
+                        <div id="div1">
+                            <p>请输入内容...</p>
+                        </div>
+                    </div>
+                    <input class="btn btn-default pull-right" type="submit" value="发布">
+
+                    <label class="checkbox-inline">
+                        <input type="radio" name="is_see" id="inlineCheckbox1" value="option1"> 所有人可见
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="is_see" value="option2"> 关注我的人可见
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="is_see" value="option3"> 只有我可见
+                    </label>
+
+                </form>
+            </article>
+
+            <article style="margin: 10px" class="post">
+                <div class="post-head">
+                    <h3 class="post-title pull-left"><a href="/post/laravel-turns-five/">唐兵</a></h3>
+                    <div class="clearfix"></div>
+                        <time class="post-date pull-left">2016年6月12日</time>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="text-left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;五年前（2011年6月11日）的今天，Taylor Otwell 将 Laravel 带到了这个世界！ 下
+                        面摘抄了部分原文：点这里看完整的原文   I've been working on this fr
+                        amework for about 7 months. I've worked really hard to mak
+                    </p>
+                    <span class="label label-default">评论</span><br><br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻fdhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回
+                    复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过防空火箭辑 <br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻辑 <br>
+                    <a>查看所有>></a> <br>
+
+                <div>
+                    <a href="/post/laravel-turns-five/" class="pull-left" style="margin-left: 100px;">阿水GOOD
+                        <span class="label label-danger">5</span>
+                    </a>
+                    <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
+                        <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                        阿水评论
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+                                    <div class="accordion-inner">
+                                        <form>
+                                            <div class="form-group">
+                                                <textarea name="" cols="60" rows=2 style="resize: none;"></textarea>
+                                            </div>
+                                            <input class="btn btn-default pull-right" type="submit" value="发布">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <footer class="post-footer clearfix">
+                    <div class="pull-left tag-list">
+                        <i class="fa fa-folder-open-o"></i>
+
+                    </div>
+                    <div class="pull-right share">
+                    </div>
+                </footer>
+            </article>
+            <article style="margin: 10px" class="post">
+                <div class="post-head">
+                    <h3 class="post-title pull-left"><a href="/post/laravel-turns-five/">唐兵</a></h3>
+                    <div class="clearfix"></div>
+                        <time class="post-date pull-left">2016年6月12日</time>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="text-left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;五年前（2011年6月11日）的今天，Taylor Otwell 将 Laravel 带到了这个世界！ 下
+                        面摘抄了部分原文：点这里看完整的原文   I've been working on this fr
+                        amework for about 7 months. I've worked really hard to mak
+                    </p>
+                    <span class="label label-default">评论</span><br><br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻fdhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回
+                    复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过防空火箭辑 <br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻辑 <br>
+                    <a>查看所有>></a> <br>
+
+                <div>
+                    <a href="/post/laravel-turns-five/" class="pull-left" style="margin-left: 100px;">阿水GOOD</a>
+                    <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">
+                    阿水评论 <span class="badge">2</span></a>-->
+                        <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne1">
+                                        阿水评论
+                                    </a>
+                                </div>
+                                <div id="collapseOne1" class="accordion-body collapse" style="height: 0px; ">
+                                    <div class="accordion-inner">
+                                        <form>
+                                            <div class="form-group">
+                                                <textarea name="" cols="60" rows=2 style="resize: none;"></textarea>
+                                            </div>
+                                            <input class="btn btn-default pull-right" type="submit" value="发布">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <footer class="post-footer clearfix">
+                    <div class="pull-left tag-list">
+                        <i class="fa fa-folder-open-o"></i>
+
+                    </div>
+                    <div class="pull-right share">
+                    </div>
+                </footer>
+            </article>
+            <article style="margin: 10px" class="post">
+                <div class="post-head">
+                    <h3 class="post-title pull-left"><a href="/post/laravel-turns-five/">唐兵</a></h3>
+                    <div class="clearfix"></div>
+                        <time class="post-date pull-left">2016年6月12日</time>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="text-left">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;五年前（2011年6月11日）的今天，Taylor Otwell 将 Laravel 带到了这个世界！ 下
+                        面摘抄了部分原文：点这里看完整的原文   I've been working on this fr
+                        amework for about 7 months. I've worked really hard to mak
+                    </p>
+                    <span class="label label-default">评论</span><br><br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻fdhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回
+                    复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过dhgkdhgk会尽快回复过防空火箭辑 <br>
+                    <mark style="margin: 3px;">张星:</mark>你哈逻辑 <br>
+                    <a>查看所有>></a> <br>
+
+                <div>
+                    <a href="/post/laravel-turns-five/" class="pull-left" style="margin-left: 100px;">阿水GOOD</a>
+                    <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
+                        <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                        阿水评论
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+                                    <div class="accordion-inner">
+                                        <form>
+                                            <div class="form-group">
+                                                <textarea name="" cols="60" rows=2 style="resize: none;"></textarea>
+                                            </div>
+                                            <input class="btn btn-default pull-right" type="submit" value="发布">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <footer class="post-footer clearfix">
+                    <div class="pull-left tag-list">
+                        <i class="fa fa-folder-open-o"></i>
+
+                    </div>
+                    <div class="pull-right share">
+                    </div>
+                </footer>
+            </article>
+
+            <nav>
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div><!-- /.container -->
+
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="edit/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="edit/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var editor = new wangEditor('div1');
+        editor.create();
+    });
+</script>
