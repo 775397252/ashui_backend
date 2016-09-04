@@ -12,7 +12,8 @@
         "rap2hpoutre/laravel-log-viewer": "^0.7.0",
         "arcanedev/log-viewer": "~3.0",
         "zizaco/entrust": "5.2.x-dev",
-        "orangehill/iseed": "dev-master"
+        "orangehill/iseed": "dev-master",
+        "gregwar/captcha": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

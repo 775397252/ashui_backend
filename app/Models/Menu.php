@@ -17,7 +17,7 @@ class Menu extends Model
         $this->name         = $array['name'];
         $this->url          = $array['url'];
         $this->active       = $array['active'];
-        $this->icon         = $array['icon'];
+        $this->icon       = $array['icon']?$array['icon']:'icon-file-alt';
         $this->active_url   = $array['active_url'];
         $this->sort         = $array['sort'];
         $this->permission_id= $array['permission_id'];
@@ -32,7 +32,7 @@ class Menu extends Model
         $flight->name         = $array['name'];
         $flight->url          = $array['url'];
         $flight->active       = $array['active'];
-        $flight->icon         = $array['icon'];
+        $flight->icon         = $array['icon']?$array['icon']:'icon-file-alt';
         $flight->active_url   = $array['active_url'];
         $flight->sort         = $array['sort'];
         $flight->permission_id= $array['permission_id'];

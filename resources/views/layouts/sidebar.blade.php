@@ -1,4 +1,3 @@
-
 <div class="sidebar" id="sidebar">
             <script type="text/javascript">
                 try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -8,15 +7,12 @@
                     <button class="btn btn-success">
                         <i class="icon-signal"></i>
                     </button>
-
                     <button class="btn btn-info">
                         <i class="icon-pencil"></i>
                     </button>
-
                     <button class="btn btn-warning">
                         <i class="icon-group"></i>
                     </button>
-
                     <button class="btn btn-danger">
                         <i class="icon-cogs"></i>
                     </button>
@@ -70,7 +66,6 @@
             <div class="sidebar-collapse" id="sidebar-collapse">
                 <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
             </div>
-
             <script type="text/javascript">
                 try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
             </script>

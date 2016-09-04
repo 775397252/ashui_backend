@@ -1,66 +1,15 @@
 <?php
-
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-////迭代器执行的时间
-//    function gen_str($n){
-//        $start = microtime(true);
-//        $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
-//        $str=null;
-//        $max = strlen($strPol)-1;
-//        function gen_t($n,$strPol,$max){
-//            for($i = 1; $i < $n; $i++)
-//                yield $strPol[rand(0,$max)];
-//        }
-//        foreach(gen_t($n,$strPol,$max) as $out)
-//            $str=$str.$out;
-//
-//        echo $str;
-//        $elapsed = microtime(true) - $start;
-//        echo '  执行时间:'.$elapsed;
-//        echo "memory (byte): ", memory_get_peak_usage(true), "\n";
-//    }
-////普通函数
-//    function getRandChar($length){
-//        $start = microtime(true);
-//        $str = null;
-//        $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
-//        $max = strlen($strPol)-1;
-//
-//        for($i=0;$i<$length;$i++){
-//            $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
-//        }
-//        echo $str;
-//        $elapsed = microtime(true) - $start;
-//        echo '  2执行时间:'.$elapsed;
-//        echo "memory (byte): ", memory_get_peak_usage(true), "\n";
-//    }
-//
-//    gen_str(30000);//2359296
-//    getRandChar(30000);
-
 Route::get('/a', function () {
      Log::emergency('测试日志'); 
 });
 Route::get('excel/export','ExcelController@export');
 Route::get('excel/import','ExcelController@import');
-
 /*
 |--------------------------------------------------------------------------
 | API routes
 |--------------------------------------------------------------------------
 */
-
 Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
     Route::group(['prefix' => 'v1'], function () {
         require config('infyom.laravel_generator.path.api_routes');
@@ -97,7 +46,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth','middleware' =>'auth'],
     Route::post('role', ['as' => 'admin.role', 'uses' => 'UserController@add_role']);
     Route::get('role/edit/{id}','UserController@role_edit');
     Route::post('role/update', ['as' => 'admin.role.update', 'uses' => 'UserController@update_role']);
-    
     //权限管理
     Route::get('permission','UserController@permission_list');
     Route::get('permission/delete/{id}','UserController@permission_delete');
@@ -113,37 +61,49 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth','middleware' =>'auth'],
 
 });
 
-Route::get('/',function (){
-    //return redirect('auth/login');
-    TagClass::echowho();
+
+
+Route::group(['middleware' =>'auth'], function () {
+
+    //会员
+    Route::get('background/members', ['as'=> 'background.members.index', 'uses' => 'Background\MemberController@index']);
+    Route::post('background/members', ['as'=> 'background.members.store', 'uses' => 'Background\MemberController@store']);
+    Route::get('background/members/create', ['as'=> 'background.members.create', 'uses' => 'Background\MemberController@create']);
+    Route::put('background/members/{members}', ['as'=> 'background.members.update', 'uses' => 'Background\MemberController@update']);
+    Route::patch('background/members/{members}', ['as'=> 'background.members.update', 'uses' => 'Background\MemberController@update']);
+    Route::delete('background/members/{members}', ['as'=> 'background.members.destroy', 'uses' => 'Background\MemberController@destroy']);
+    Route::get('background/members/{members}', ['as'=> 'background.members.show', 'uses' => 'Background\MemberController@show']);
+    Route::get('background/members/{members}/edit', ['as'=> 'background.members.edit', 'uses' => 'Background\MemberController@edit']);
+
+    //阿水分享
+    Route::get('background/ashuiConfessions', ['as'=> 'background.ashuiConfessions.index', 'uses' => 'Background\AshuiConfessionController@index']);
+    Route::post('background/ashuiConfessions', ['as'=> 'background.ashuiConfessions.store', 'uses' => 'Background\AshuiConfessionController@store']);
+    Route::get('background/ashuiConfessions/create', ['as'=> 'background.ashuiConfessions.create', 'uses' => 'Background\AshuiConfessionController@create']);
+    Route::put('background/ashuiConfessions/{ashuiConfessions}', ['as'=> 'background.ashuiConfessions.update', 'uses' => 'Background\AshuiConfessionController@update']);
+    Route::patch('background/ashuiConfessions/{ashuiConfessions}', ['as'=> 'background.ashuiConfessions.update', 'uses' => 'Background\AshuiConfessionController@update']);
+    Route::delete('background/ashuiConfessions/{ashuiConfessions}', ['as'=> 'background.ashuiConfessions.destroy', 'uses' => 'Background\AshuiConfessionController@destroy']);
+    Route::get('background/ashuiConfessions/{ashuiConfessions}', ['as'=> 'background.ashuiConfessions.show', 'uses' => 'Background\AshuiConfessionController@show']);
+    Route::get('background/ashuiConfessions/{ashuiConfessions}/edit', ['as'=> 'background.ashuiConfessions.edit', 'uses' => 'Background\AshuiConfessionController@edit']);
+   //阿水表白
+    Route::get('background/biaobais', ['as'=> 'background.biaobais.index', 'uses' => 'Background\BiaobaiController@index']);
+    Route::post('background/biaobais', ['as'=> 'background.biaobais.store', 'uses' => 'Background\BiaobaiController@store']);
+    Route::get('background/biaobais/create', ['as'=> 'background.biaobais.create', 'uses' => 'Background\BiaobaiController@create']);
+    Route::put('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.update', 'uses' => 'Background\BiaobaiController@update']);
+    Route::patch('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.update', 'uses' => 'Background\BiaobaiController@update']);
+    Route::delete('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.destroy', 'uses' => 'Background\BiaobaiController@destroy']);
+    Route::get('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.show', 'uses' => 'Background\BiaobaiController@show']);
+    Route::get('background/biaobais/{biaobais}/edit', ['as'=> 'background.biaobais.edit', 'uses' => 'Background\BiaobaiController@edit']);
+
 });
+/*
+|--------------------------------------------------------------------------
+| Home routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/', 'Home\IndexController@index');
+Route::get('/login', 'Home\UserController@login');
+Route::any('/register', 'Home\UserController@register');
+Route::get('/captcha/{tmp}', 'Home\UserController@captcha');
 
 
-Route::get('background/articles', ['as'=> 'background.articles.index', 'uses' => 'background\ArticlesController@index']);
-Route::post('background/articles', ['as'=> 'background.articles.store', 'uses' => 'background\ArticlesController@store']);
-Route::get('background/articles/create', ['as'=> 'background.articles.create', 'uses' => 'background\ArticlesController@create']);
-Route::put('background/articles/{articles}', ['as'=> 'background.articles.update', 'uses' => 'background\ArticlesController@update']);
-Route::patch('background/articles/{articles}', ['as'=> 'background.articles.update', 'uses' => 'background\ArticlesController@update']);
-Route::delete('background/articles/{articles}', ['as'=> 'background.articles.destroy', 'uses' => 'background\ArticlesController@destroy']);
-Route::get('background/articles/{articles}', ['as'=> 'background.articles.show', 'uses' => 'background\ArticlesController@show']);
-Route::get('background/articles/{articles}/edit', ['as'=> 'background.articles.edit', 'uses' => 'background\ArticlesController@edit']);
 
-
-Route::get('background/tags', ['as'=> 'background.tags.index', 'uses' => 'Background\TagController@index']);
-Route::post('background/tags', ['as'=> 'background.tags.store', 'uses' => 'Background\TagController@store']);
-Route::get('background/tags/create', ['as'=> 'background.tags.create', 'uses' => 'Background\TagController@create']);
-Route::put('background/tags/{tags}', ['as'=> 'background.tags.update', 'uses' => 'Background\TagController@update']);
-Route::patch('background/tags/{tags}', ['as'=> 'background.tags.update', 'uses' => 'Background\TagController@update']);
-Route::delete('background/tags/{tags}', ['as'=> 'background.tags.destroy', 'uses' => 'Background\TagController@destroy']);
-Route::get('background/tags/{tags}', ['as'=> 'background.tags.show', 'uses' => 'Background\TagController@show']);
-Route::get('background/tags/{tags}/edit', ['as'=> 'background.tags.edit', 'uses' => 'Background\TagController@edit']);
-
-
-Route::get('background/posts', ['as'=> 'background.posts.index', 'uses' => 'Background\PostController@index']);
-Route::post('background/posts', ['as'=> 'background.posts.store', 'uses' => 'Background\PostController@store']);
-Route::get('background/posts/create', ['as'=> 'background.posts.create', 'uses' => 'Background\PostController@create']);
-Route::put('background/posts/{posts}', ['as'=> 'background.posts.update', 'uses' => 'Background\PostController@update']);
-Route::patch('background/posts/{posts}', ['as'=> 'background.posts.update', 'uses' => 'Background\PostController@update']);
-Route::delete('background/posts/{posts}', ['as'=> 'background.posts.destroy', 'uses' => 'Background\PostController@destroy']);
-Route::get('background/posts/{posts}', ['as'=> 'background.posts.show', 'uses' => 'Background\PostController@show']);
-Route::get('background/posts/{posts}/edit', ['as'=> 'background.posts.edit', 'uses' => 'Background\PostController@edit']);

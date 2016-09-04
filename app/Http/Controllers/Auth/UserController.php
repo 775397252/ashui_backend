@@ -76,7 +76,7 @@ class UserController extends Controller
     //权限列表
     public function permission_list()
     {
-        return view('user.permission_list')->withUsers(Permission::paginate(5));
+        return view('user.permission_list')->withUsers(Permission::orderBy('id', 'desc')->paginate(15));
     }
     //添加权限
     public function add_permission(Permission $permission,Request $request){
@@ -176,7 +176,7 @@ class UserController extends Controller
     //菜单列表
     public function menu_list()
     {
-        return view('user.menu_list')->withMenus(Menu::paginate(5))->withPermissions(Permission::get());
+        return view('user.menu_list')->withMenus(Menu::orderBy('id', 'desc')->paginate(15))->withPermissions(Permission::get());
     }
     //添加菜单
     public function add_menu(Menu $menu,Request $request){
