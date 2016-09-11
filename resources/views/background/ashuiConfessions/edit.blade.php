@@ -3,7 +3,7 @@
 @section('content')
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="pull-left">编辑 AshuiConfession</h1>
+                <h1 class="pull-left">编辑 阿水分享</h1>
             </div>
         </div>
 

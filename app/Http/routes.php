@@ -61,8 +61,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth','middleware' =>'auth'],
 
 });
 
-
-
 Route::group(['middleware' =>'auth'], function () {
 
     //会员
@@ -101,9 +99,16 @@ Route::group(['middleware' =>'auth'], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'Home\IndexController@index');
-Route::get('/login', 'Home\UserController@login');
+Route::any('/login', 'Home\UserController@login');
+Route::any('/logout', 'Home\UserController@logout');
 Route::any('/register', 'Home\UserController@register');
 Route::get('/captcha/{tmp}', 'Home\UserController@captcha');
+Route::get('/ashui/share', 'Home\ShareController@index');
+Route::get('/ashui/share/comment', 'Home\ShareController@comment');
+Route::get('/ashui/share/click', 'Home\ShareController@click');
+Route::get('/ashui/service/upprint', 'Home\ServiceController@upprint');
+Route::post('/ashui/service/printprice', 'Home\ServiceController@printprice');
+Route::get('/ashui/service/ashui_book', 'Home\ServiceController@ashui_book');
 
 
 

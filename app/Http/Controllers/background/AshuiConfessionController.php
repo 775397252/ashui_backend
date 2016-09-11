@@ -57,11 +57,10 @@ class AshuiConfessionController extends LaravelController
     public function store(CreateAshuiConfessionRequest $request)
     {
         $input = $request->all();
-
+        $type=config('ashui.type');
+        $input['typr_name']=$type[$input['type']];
         $ashuiConfession = $this->ashuiConfessionRepository->create($input);
-
-        Flash::success('AshuiConfession saved successfully.');
-
+        Flash::success('保存成功.');
         return redirect(route('background.ashuiConfessions.index'));
     }
 
@@ -122,10 +121,13 @@ class AshuiConfessionController extends LaravelController
 
             return redirect(route('background.ashuiConfessions.index'));
         }
+        $input=$request->all();
+        $type=config('ashui.type');
+        $input['typr_name']=$type[$input['type']];
+        $input['content']=htmlspecialchars_decode($input['content']);
+        $ashuiConfession = $this->ashuiConfessionRepository->update($input, $id);
 
-        $ashuiConfession = $this->ashuiConfessionRepository->update($request->all(), $id);
-
-        Flash::success('AshuiConfession updated successfully.');
+        Flash::success('编辑成功.');
 
         return redirect(route('background.ashuiConfessions.index'));
     }

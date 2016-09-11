@@ -4,7 +4,7 @@ namespace App\Models\Background;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Home\AshuiConfessionsComment;
 /**
  * Class AshuiConfession
  * @package App\Models\Background
@@ -25,6 +25,12 @@ class AshuiConfession extends Model
         'title',
         'content'
     ];
+    //关联表confessions_id外键，id本地逐渐
+    public function comments()
+    {
+        return $this->hasMany(AshuiConfessionsComment::class,'confessions_id','id');
+    }
+
 
     /**
      * The attributes that should be casted to native types.

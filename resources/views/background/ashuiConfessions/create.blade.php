@@ -11,9 +11,7 @@
 
     <div class="row">
         {!! Form::open(['route' => 'background.ashuiConfessions.store']) !!}
-
-            @include('background.ashuiConfessions.fields')
-
+            @include('background.ashuiConfessions.cfields')
         {!! Form::close() !!}
     </div>
 @endsection

@@ -28,17 +28,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="as_toutiao.html">游客浏览</a></li>
+                <li class="active"><a href="{{url('ashui/share')}}">游客浏览</a></li>
                 <li><a href="{{url('register')}}">注册</a></li>
                 <li><a href="{{url('login')}}">登录</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
-<div class="container">
     @yield('content')
-</div><!-- /.container -->
 </body>
 </html>
 <script src="{{ URL::asset('Home/js/jquery.min.js')}}"></script>

@@ -25,6 +25,7 @@ class Member extends Model
         'school',
         'password',
         'is_love',
+        'username',
         'address'
     ];
 
@@ -38,6 +39,7 @@ class Member extends Model
         'email' => 'string',
         'school' => 'string',
         'password' => 'string',
+        'username' => 'string',
         'address' => 'string'
     ];
 
