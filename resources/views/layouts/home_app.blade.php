@@ -28,9 +28,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{url('ashui/share')}}">游客浏览</a></li>
-                <li><a href="{{url('register')}}">注册</a></li>
-                <li><a href="{{url('login')}}">登录</a></li>
+
+                @if(session('member_id'))
+                    <li class="active"><a href="{{url('ashui/share')}}">浏览网站</a></li>
+                    <li><a href="{{url('logout')}}">退出</a></li>
+                @else
+                    <li class="active"><a href="{{url('ashui/share')}}">游客浏览</a></li>
+                    <li><a href="{{url('register')}}">注册</a></li>
+                    <li><a href="{{url('login')}}">登录</a></li>
+                @endif
             </ul>
         </div>
     </div>

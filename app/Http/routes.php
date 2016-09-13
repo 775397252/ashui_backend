@@ -91,6 +91,21 @@ Route::group(['middleware' =>'auth'], function () {
     Route::delete('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.destroy', 'uses' => 'Background\BiaobaiController@destroy']);
     Route::get('background/biaobais/{biaobais}', ['as'=> 'background.biaobais.show', 'uses' => 'Background\BiaobaiController@show']);
     Route::get('background/biaobais/{biaobais}/edit', ['as'=> 'background.biaobais.edit', 'uses' => 'Background\BiaobaiController@edit']);
+    //阿水服务
+    //打印
+    Route::get('background/ashuiServiceprint', ['as'=> 'background.ashuiServiceprint.index', 'uses' => 'Background\AshuiServiceController@printlist']);
+    Route::get('background/ashuiServiceprint/deleteprint/{id}', ['as'=> 'background.ashuiServiceprint.deleteprint', 'uses' => 'Background\AshuiServiceController@deleteprint']);
+    //图书
+    Route::get('background/ashuiServicebook', ['as'=> 'background.ashuiServicebook.index', 'uses' => 'Background\AshuiServiceController@booklist']);
+    Route::get('background/ashuiServicebook/add', ['as'=> 'background.ashuiServicebook.add', 'uses' => 'Background\AshuiServiceController@addbook']);
+    Route::post('background/ashuiServicebook/store', ['as'=> 'background.ashuiServicebook.store', 'uses' => 'Background\AshuiServiceController@storebook']);
+
+
+
+
+    Route::get('/storage/uploads/{aa}', function($aa){
+        return response()->download(storage_path('uploads').'//'.$aa);
+    });
 
 });
 /*

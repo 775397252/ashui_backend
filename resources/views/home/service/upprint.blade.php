@@ -30,6 +30,12 @@
                         <input type="number" name="number" class="form-control" id="" placeholder="填写资料页数">
                     </div>
                 </div>
+               <div class="form-group">
+                    <label for="" class="col-sm-4 control-label">备注（如彩印，单双面打印）：</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="other" class="form-control" id="" placeholder="备注">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="" class="col-sm-4 control-label">上传资料</label>
                     <div class="col-sm-5">
