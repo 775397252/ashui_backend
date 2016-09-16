@@ -51,10 +51,10 @@
                 <li><a href="{{url('ashui/place')}}">阿水广场</a></li>
                 <li><a href="{{url('ashui/meet')}}">阿水相遇</a></li>
                 <li><a href="{{url('ashui/share')}}">阿水分享</a></li>
-                <li><a href="{{url('my/index')}}">我的阿水</a></li>
                 <li><a href="{{url('ashui/service/upprint')}}">阿水服务</a></li>
                 @if(session('member_id'))
-                <li><a href="{{url('logout')}}">退出</a></li>
+                    <li><a href="{{url('my/index')}}">我的阿水</a></li>
+                    <li><a href="{{url('logout')}}">退出</a></li>
                 <li><a href="javascript:void(0)">用户名：{{session('member_name')}}</a></li>
                     @else
                     <li><a href="{{url('login')}}">登录</a></li>
