@@ -100,7 +100,9 @@ Route::group(['middleware' =>'auth'], function () {
     Route::get('background/ashuiServicebook/add', ['as'=> 'background.ashuiServicebook.add', 'uses' => 'Background\AshuiServiceController@addbook']);
     Route::post('background/ashuiServicebook/store', ['as'=> 'background.ashuiServicebook.store', 'uses' => 'Background\AshuiServiceController@storebook']);
     Route::get('background/ashuiServicebook/deletebook/{id}', 'Background\AshuiServiceController@deletebook');
-
+    //广场
+    Route::get('background/ashuiPlace', ['as'=> 'background.ashuiPlace.index', 'uses' => 'Background\AshuiPlaceController@index']);
+    Route::get('background/ashuiPlace/delete/{id}', 'Background\AshuiPlaceController@delete');
 
 
 
@@ -127,6 +129,7 @@ Route::get('/ashui/share/click', 'Home\ShareController@click');
 Route::get('/ashui/service/upprint', 'Home\ServiceController@upprint');
 Route::post('/ashui/service/printprice', 'Home\ServiceController@printprice');
 Route::get('/ashui/service/ashui_book', 'Home\ServiceController@ashui_book');
+Route::get('/ashui/service/book_detail/{id}', 'Home\ServiceController@book_detail');
 //阿水表白
 Route::get('/ashui/meet', 'Home\MeetController@index');
 Route::get('/ashui/meet/comment', 'Home\MeetController@comment');
@@ -135,10 +138,20 @@ Route::any('/ashui/meet/wall', 'Home\MeetController@wall');
 Route::any('/ashui/meet/dove', 'Home\MeetController@dove');
 //阿水广场
 Route::get('/ashui/place', 'Home\PlaceController@index');
+Route::get('/ashui/top', 'Home\PlaceController@top');
 Route::get('/ashui/place/comment', 'Home\PlaceController@comment');
 Route::get('/ashui/place/click', 'Home\PlaceController@click');
 Route::any('/ashui/place/yifa', 'Home\PlaceController@yifa');
 Route::any('/ashui/place/especially', 'Home\PlaceController@especially');
 //留言版
 Route::any('/ashui/messageboard/{id}', 'Home\UserController@MessageBoard');
+Route::any('/ashui/main/{id}', 'Home\UserController@main');
+//关注
 Route::any('/ashui/attend', 'Home\UserController@attend');
+//我的阿水
+Route::get('/my/index', 'Home\MyController@index');
+Route::get('/my/attend', 'Home\MyController@attend');
+Route::any('/my/updateinfo', 'Home\MyController@updateInfo');
+Route::any('/my/messageboard/{id}', 'Home\MyController@MessageBoard');
+
+

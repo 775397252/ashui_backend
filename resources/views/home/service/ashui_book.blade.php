@@ -15,7 +15,7 @@
                         <img class="img-circle" src="{{$v->file}}" alt="没有图片。。。" width="140" height="140">
                         <h4>{{$v->bookname}}</h4>
                         <p class="text-danger">价格:{{$v->price}}元</p>
-                        <p><a class="btn btn-default" href="#" role="button">立即购买</a></p>
+                        <p><a class="btn btn-default" href="{{url('ashui/service/book_detail',[$v->id])}}" role="button">立即购买</a></p>
                     </div><!-- /.col-lg-4 -->
                     @endforeach
                 </div>

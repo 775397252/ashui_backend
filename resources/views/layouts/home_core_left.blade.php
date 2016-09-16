@@ -2,6 +2,6 @@
     <ul class="nav nav-tabs nav-stacked" >
         <li ><a href="{{url('ashui/service/upprint')}}">打印</a></li>
         <li><a href="{{url('ashui/service/ashui_book')}}">书籍</a></li>
-        <li><a href="{{url('ashui/service/ashui_book')}}">社区</a></li>
+        {{--<li><a href="{{url('ashui/service/ashui_book')}}">社区</a></li>--}}
     </ul>
 </div>

@@ -40,8 +40,7 @@ class PlaceController extends LaravelController
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
         $share=$query->where('type','<>',2)->orWhere(function ($query) {
             $query->where('user_id',  session("member_id"));
-        })
-            ->paginate(2);
+        })->paginate(2);
         return view('home.place.index')->withShare($share);
     }
 
@@ -52,6 +51,7 @@ class PlaceController extends LaravelController
         $ashuiConfessionComment->comment = $request->comment;
         $ashuiConfessionComment->username = session("member_name");
         $ashuiConfessionComment->save();
+        AshuiPlace::where('id',$request->place_id)->increment('weight',6);
         return response()->json(['state' => 1, 'msg' => '评论成功！']);
     }
 
@@ -65,7 +65,33 @@ class PlaceController extends LaravelController
             'place_id'=>$ids,
             'user_id'=>$request->user_id,
         ]);
+        AshuiPlace::where('id',$ids)->increment('weight',4);
         return response()->json(['state' => 1, 'msg' => '成功！']);
     }
 
+    //阿水头条
+    public function top(){
+        $query=AshuiPlace::orderBy('weight', 'desc')->with('comments')->with('users');
+        $share=$query->where('type','<>',2)->orWhere(function ($query) {
+            $query->where('user_id',  session("member_id"));
+        })->paginate(2);
+        return view('home.place.top')->withShare($share);
+    }
+
+    //特别关注
+    public function especially(){
+        //获取我关注列表
+        $attend=DB::table('ashui_attend')->where('user_id',session('member_id'))->get();
+        $peopel=[];
+        if($attend){
+            foreach($attend as $v){
+                $peopel[]=$v->attend_user_id;
+            }
+        }
+        $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
+        $share=$query->where('type','<>',2)->orWhere(function ($query) {
+            $query->where('user_id',  session("member_id"));
+        })->whereIn('user_id',$peopel)->paginate(2);
+        return view('home.place.index')->withShare($share);
+    }
 }

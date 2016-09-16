@@ -1,13 +1,5 @@
 @extends('layouts.home_app_core')
 @section('content')
-        <div class="col-xs-3" class="pull-left" style="margin-top: 100px;width: 100px;z-index: 100;position: fixed">
-                <ul class="nav nav-tabs nav-stacked" >
-                        <li ><a href="{{url('ashui/share')}}?type=0">文章</a></li>
-                        <li><a href="{{url('ashui/share')}}?type=1">视频</a></li>
-                        <li><a href="{{url('ashui/share')}}?type=2">音乐</a></li>
-                        <li><a href="{{url('ashui/share')}}?type=3">图片</a></li>
-                </ul>
-        </div>
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
@@ -16,7 +8,7 @@
                                 <article style="margin: 10px" class="post">
                                         <div class="post-head">
                                                 <h3 class="post-title pull-left">
-                                                    <a href="javascript:void(0)">阿水</a>
+                                                    <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>
                                                 </h3>
                                                 <div class="clearfix"></div>
                                                 <time class="post-date pull-left">{{$v->created_at}}</time>
@@ -93,9 +85,9 @@
                 }
                 $.ajax({
                     type: "GET",
-                    url: "{{url('ashui/share/comment')}}",
+                    url: "{{url('ashui/place/comment')}}",
                     data: {
-                        confessions_id:id,
+                        place_id:id,
                         user_id:uid,
                         comment:comment
                     },
@@ -120,9 +112,9 @@
                 }
                 $.ajax({
                     type: "GET",
-                    url: "{{url('ashui/share/click')}}",
+                    url: "{{url('ashui/place/click')}}",
                     data: {
-                        confessions_id:id,
+                        place_id:id,
                         user_id:uid,
                     },
                     dataType: "json",

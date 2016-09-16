@@ -54,6 +54,10 @@ class ServiceController extends LaravelController
         return view('home.service.ashui_book')->withBook($books);
     }
 
+    public function book_detail($id){
+        $books=AshuiBook::where('id',$id)->first();
+        return view('home.service.book_detail')->withBook($books);
+    }
 
 
 }

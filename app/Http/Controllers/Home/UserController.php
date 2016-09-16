@@ -8,6 +8,8 @@ use App\Models\Home\AshuiMessageBoard;
 use Carbon\Carbon;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
+use App\Models\Background\AshuiPlace;
+
 use Session;
 use Validator;
 use DB;
@@ -128,5 +130,12 @@ class UserController extends Controller
         return response()->json(['state' => 0, 'msg' => '失败！']);
 
     }
-
+    //主页
+    //主页
+    public function main($id)
+    {
+        $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
+        $share=$query->where('user_id',$id)->paginate(2);
+        return view('home.user.main')->withShare($share)->withId($id);
+    }
 }
