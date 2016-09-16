@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Background\Member;
+use App\Models\Home\AshuiMessageBoard;
+use Carbon\Carbon;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 use Session;
 use Validator;
+use DB;
 class UserController extends Controller
 {
     //用户列表
@@ -93,4 +96,37 @@ class UserController extends Controller
         $request->session()->forget('member_name');
         return redirect('/login');
     }
+    public function MessageBoard(Request $request,$id){
+        if($request->isMethod('post')){
+            $data=$request->all();
+            DB::table('ashui_message_board')->insert([
+                'user_id'=>$data['user_id'],
+                'to_user_id'=>$data['to_user_id'],
+                'comment'=>$data['comment'],
+                'created_at'=>Carbon::now(),
+            ]);
+        }
+        //判断是否关注
+        $iid=DB::table('ashui_attend')->where('user_id',session('member_id'))->where('attend_user_id',$id)->first();
+        $attend=0;
+        if($iid){
+           $attend=1;
+        }
+        $message=AshuiMessageBoard::where('user_id',$id)->paginate(10);
+       return view('home.user.messageboard')->withShare($message)->withId($id)->withAttend($attend);
+    }
+    public function attend(Request $request){
+            $data=$request->all();
+            $ok=DB::table('ashui_attend')->insert([
+                'user_id'=>$data['user_id'],
+                'attend_user_id'=>$data['attend_user_id'],
+                'created_at'=>Carbon::now(),
+            ]);
+            if($ok){
+                return response()->json(['state' => 1, 'msg' => '成功！']);
+            }
+        return response()->json(['state' => 0, 'msg' => '失败！']);
+
+    }
+
 }

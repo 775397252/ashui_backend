@@ -27,13 +27,13 @@
             @foreach($list as $ashuiConfession)
                 <tr>
                     <td>{!! $ashuiConfession->id !!}</td>
-                    <td>{!! $ashuiConfession->number !!}</td>
-                    <td><?php echo $ashuiConfession->number*0.1+0.5;?></td>
-                    <td><a href="{{$ashuiConfession->file }}">下载</a></td>
-                    <td>{{$ashuiConfession->username }}</td>
+                    <td>{!! $ashuiConfession->bookname !!}</td>
+                    <td><?php echo $ashuiConfession->price;?></td>
+                    <td><img width="50px;" height="50px" src="{!! $ashuiConfession->file !!}" alt=""></td>
+                    <td>{{$ashuiConfession->created_at }}</td>
                     <td>
                         <div class='btn-group'>
-                            <a onclick="return confirm('你确定要删除?')" href="{!! url('background/ashuiServiceprint/deleteprint', [$ashuiConfession->id]) !!}" class='btn btn-danger btn-xs'>
+                            <a onclick="return confirm('你确定要删除?')" href="{!! url('background/ashuiServicebook/deletebook', [$ashuiConfession->id]) !!}" class='btn btn-danger btn-xs'>
                                 <i class="glyphicon glyphicon-edit">删除</i></a>
                         </div>
 

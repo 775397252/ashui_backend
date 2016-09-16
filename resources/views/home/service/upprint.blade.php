@@ -1,12 +1,7 @@
 @extends('layouts.home_app_core')
 @section('content')
-    <div class="col-xs-3" class="pull-left" style="margin-top: 100px;width: 100px;z-index: 100;position: fixed">
-        <ul class="nav nav-tabs nav-stacked" >
-            <li ><a href="#section-1">打印</a></li>
-            <li><a href="#section-2">书籍</a></li>
-            <li><a href="#section-2">社区</a></li>
-        </ul>
-    </div>
+    @include('layouts.home_core_left')
+
       <div class="clearfix"></div>
         <div class="container">
     <div class="starter-template">
@@ -31,9 +26,9 @@
                     </div>
                 </div>
                <div class="form-group">
-                    <label for="" class="col-sm-4 control-label">备注（如彩印，单双面打印）：</label>
+                    <label for="" class="col-sm-4 control-label">备注（电话，地址，彩印等）：</label>
                     <div class="col-sm-5">
-                        <input type="text" name="other" class="form-control" id="" placeholder="备注">
+                        <textarea name="other" class="form-control" id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

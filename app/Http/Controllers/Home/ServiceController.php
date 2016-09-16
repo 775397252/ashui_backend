@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller as LaravelController;
-use App\Models\Background\AshuiConfession;
+use App\Models\Background\AshuiBook;
 use App\Models\Home\AshuiConfessionsComment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,10 +32,10 @@ class ServiceController extends LaravelController
             return redirect('/ashui/service/upprint')->withErrors('请选择小于10M的文件');
         };
 
-
         if ($file->isValid()) {
-            $filename=time().$file->getClientOriginalName();
-            $path = $file->move(storage_path('uploads'),$filename);
+            $ext = $file->getClientOriginalExtension();     // 扩展名
+            $filename=time().'.' . $ext;
+            $file->move(storage_path('uploads'),$filename);
             DB::table('print_file')->insert([
                 'user_id'=>session('member_id'),
                 'number'=>$number,
@@ -50,7 +50,8 @@ class ServiceController extends LaravelController
     }
 
     public function ashui_book(){
-        return view('home.service.ashui_book');
+        $books=AshuiBook::orderBy('id', 'desc')->paginate(9);
+        return view('home.service.ashui_book')->withBook($books);
     }
 
 

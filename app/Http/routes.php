@@ -99,6 +99,7 @@ Route::group(['middleware' =>'auth'], function () {
     Route::get('background/ashuiServicebook', ['as'=> 'background.ashuiServicebook.index', 'uses' => 'Background\AshuiServiceController@booklist']);
     Route::get('background/ashuiServicebook/add', ['as'=> 'background.ashuiServicebook.add', 'uses' => 'Background\AshuiServiceController@addbook']);
     Route::post('background/ashuiServicebook/store', ['as'=> 'background.ashuiServicebook.store', 'uses' => 'Background\AshuiServiceController@storebook']);
+    Route::get('background/ashuiServicebook/deletebook/{id}', 'Background\AshuiServiceController@deletebook');
 
 
 
@@ -118,12 +119,26 @@ Route::any('/login', 'Home\UserController@login');
 Route::any('/logout', 'Home\UserController@logout');
 Route::any('/register', 'Home\UserController@register');
 Route::get('/captcha/{tmp}', 'Home\UserController@captcha');
+//阿水分享
 Route::get('/ashui/share', 'Home\ShareController@index');
 Route::get('/ashui/share/comment', 'Home\ShareController@comment');
 Route::get('/ashui/share/click', 'Home\ShareController@click');
+//阿水服务
 Route::get('/ashui/service/upprint', 'Home\ServiceController@upprint');
 Route::post('/ashui/service/printprice', 'Home\ServiceController@printprice');
 Route::get('/ashui/service/ashui_book', 'Home\ServiceController@ashui_book');
-
-
-
+//阿水表白
+Route::get('/ashui/meet', 'Home\MeetController@index');
+Route::get('/ashui/meet/comment', 'Home\MeetController@comment');
+Route::get('/ashui/meet/click', 'Home\MeetController@click');
+Route::any('/ashui/meet/wall', 'Home\MeetController@wall');
+Route::any('/ashui/meet/dove', 'Home\MeetController@dove');
+//阿水广场
+Route::get('/ashui/place', 'Home\PlaceController@index');
+Route::get('/ashui/place/comment', 'Home\PlaceController@comment');
+Route::get('/ashui/place/click', 'Home\PlaceController@click');
+Route::any('/ashui/place/yifa', 'Home\PlaceController@yifa');
+Route::any('/ashui/place/especially', 'Home\PlaceController@especially');
+//留言版
+Route::any('/ashui/messageboard/{id}', 'Home\UserController@MessageBoard');
+Route::any('/ashui/attend', 'Home\UserController@attend');

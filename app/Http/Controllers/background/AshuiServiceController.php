@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Background;
 
 use App\Http\Requests\Background;
-use App\Http\Requests\Background\CreateMemberRequest;
-use App\Http\Requests\Background\UpdateMemberRequest;
-use App\Repositories\Background\MemberRepository;
 use App\Http\Controllers\Controller as LaravelController;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\DB;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
 class AshuiServiceController extends LaravelController
 {
 
@@ -35,7 +31,6 @@ class AshuiServiceController extends LaravelController
 
 
 
-
     public function booklist(){
         $list=DB::table('ashui_book')->orderBy('ashui_book.id', 'desc')->paginate(20);
         return view('background.service.booklist')->withList($list);
@@ -44,8 +39,30 @@ class AshuiServiceController extends LaravelController
     public function addbook(){
         return view('background.service.addbook');
     }
-    public function storebook(){
-        return redirect('background/ashuiServicebook/store');
+    public function storebook(Request $request){
+        $date=$request->all();
+        $file = $request->file('file');
+        //文件上传
+        $filename='';
+        if ($file->isValid()) {
+            //$filename=time().$file->getClientOriginalName();
+            $ext = $file->getClientOriginalExtension();     // 扩展名
+            $filename=time().'.' . $ext;
+            $file->move(public_path('uploads'),$filename);
+        }
+        DB::table('ashui_book')->insert([
+            'bookname'=>$date['bookname'],
+            'price'=>$date['price'],
+            'content'=>$date['content'],
+            'file'=>'/uploads/'.$filename,
+            'created_at'=>Carbon::now()
+        ]);
+        return redirect('background/ashuiServicebook');
     }
+    public function deletebook($id){
+        DB::table('ashui_book')->delete($id);
+        return redirect('background/ashuiServicebook');
+    }
+
 
 }

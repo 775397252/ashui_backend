@@ -48,8 +48,8 @@
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
                <li><a href="#">阿水头条</a></li>
-                <li><a href="rigister.html">阿水广场</a></li>
-                <li><a href="rigister.html">阿水相遇</a></li>
+                <li><a href="{{url('ashui/place')}}">阿水广场</a></li>
+                <li><a href="{{url('ashui/meet')}}">阿水相遇</a></li>
                 <li><a href="{{url('ashui/share')}}">阿水分享</a></li>
                 <li><a href="rigister.html">我的阿水</a></li>
                 <li><a href="{{url('ashui/service/upprint')}}">阿水服务</a></li>
@@ -58,7 +58,6 @@
                 <li><a href="javascript:void(0)">用户名：{{session('member_name')}}</a></li>
                     @else
                     <li><a href="{{url('login')}}">登录</a></li>
-
                 @endif
             </ul>
         </div>
@@ -69,3 +68,5 @@
 </html>
 <script src="{{ URL::asset('Home/js/jquery.min.js')}}"></script>
 <script src="{{ URL::asset('Home/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('edit/js/wangEditor.min.js')}}"></script>
+@yield('script')
