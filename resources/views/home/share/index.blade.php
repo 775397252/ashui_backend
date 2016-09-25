@@ -5,6 +5,7 @@
                         <li ><a href="{{url('ashui/share')}}?type=0">文章</a></li>
                         <li><a href="{{url('ashui/share')}}?type=1">视频</a></li>
                         <li><a href="{{url('ashui/share')}}?type=2">音乐</a></li>
+
                         <li><a href="{{url('ashui/share')}}?type=3">图片</a></li>
                 </ul>
         </div>
