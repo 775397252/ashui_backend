@@ -74,12 +74,15 @@
             });
         }
         function check(form) {
-            if(form.comment.value=='') {
+            alert(form.comment.value)
+            if(trimStr(form.comment.value)=='') {
                 alert("请说点什么吧!");
-                form.userId.focus();
                 return false;
             }
             return true;
         }
+        function trimStr(str){return str.replace(/(^\s*)|(\s*$)/g,"");}
+
+
     </script>
 @endsection

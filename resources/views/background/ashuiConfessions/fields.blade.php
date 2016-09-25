@@ -22,7 +22,7 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('content', '内容:') !!}
     <script id="container" name="content" type="text/plain">
-        {!!$ashuiConfession->content!!}
+        {{$ashuiConfession->content}}
     </script>
 </div>
 

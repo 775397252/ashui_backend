@@ -97,7 +97,6 @@ class AshuiConfessionController extends LaravelController
 
         if (empty($ashuiConfession)) {
             Flash::error('AshuiConfession not found');
-
             return redirect(route('background.ashuiConfessions.index'));
         }
 

@@ -39,7 +39,9 @@ class UserController extends Controller
 
         });
         if ($validator->fails()) {
-            return view('home.user.login')->withErrors($validator);
+            return redirect('login')
+                    ->withErrors($validator)
+                    ->withInput();
         }
         $userinfo=Member::where('phone',$request->get('phone'))->first();
         session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
@@ -68,11 +70,17 @@ class UserController extends Controller
                 }
             });
             if ($validator->fails()) {
-                return view('home.user.register')->withErrors($validator);
+                return redirect('register')
+                    ->withErrors($validator)
+                    ->withInput();
             }
            // dd($request->all());
             $info=Member::create($request->all());
-            if($info) return redirect('login');
+            //新添加直接登录
+            $userinfo=Member::where('phone',$request->get('phone'))->first();
+            session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
+            return redirect('/');
+            //if($info) return redirect('login');
         }
         return view('home.user.register');
     }
@@ -114,7 +122,8 @@ class UserController extends Controller
         if($iid){
            $attend=1;
         }
-        $message=AshuiMessageBoard::where('user_id',$id)->paginate(10);
+        $message=AshuiMessageBoard::where('to_user_id',$id)->with('users')->orderBy('id', 'desc')->paginate(10);
+     // dd($message);
        return view('home.user.messageboard')->withShare($message)->withId($id)->withAttend($attend);
     }
     public function attend(Request $request){

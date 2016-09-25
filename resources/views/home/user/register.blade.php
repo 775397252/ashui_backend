@@ -18,13 +18,13 @@
                     <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">手机</label>
                                 <div class="col-sm-5">
-                                        <input type="text" name="phone" class="form-control" id="" placeholder="手机">
+                                        <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="手机">
                                 </div>
                         </div>
                    <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">用户名</label>
                                 <div class="col-sm-5">
-                                        <input type="text" name="username" class="form-control" id="" placeholder="用户名">
+                                        <input type="text" name="username" value="{{old('username')}}" class="form-control" id="" placeholder="用户名">
                                 </div>
                         </div>
                         {{--<div class="form-group">--}}
@@ -38,7 +38,7 @@
                         <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">邮箱</label>
                                 <div class="col-sm-5">
-                                        <input type="email" name="email" class="form-control" id="" placeholder="邮箱">
+                                        <input type="email" name="email" value="{{old('email')}}" class="form-control" id="" placeholder="邮箱">
                                 </div>
                         </div>
                         <div class="form-group">
@@ -50,19 +50,19 @@
                         <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">密码</label>
                                 <div class="col-sm-5">
-                                        <input type="password" name="password" class="form-control" id="" placeholder="密码">
+                                        <input type="password" name="password" value="{{old('password')}}" class="form-control" id="" placeholder="密码">
                                 </div>
                         </div>
                         <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">再次输入密码</label>
                                 <div class="col-sm-5">
-                                        <input type="password" name="password_confirmation" class="form-control" id="" placeholder="再次输入密码">
+                                        <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}" class="form-control" id="" placeholder="再次输入密码">
                                 </div>
                         </div>
                     <div class="form-group">
                         <label for="" class="col-sm-4 control-label">验证码：</label>
                         <div class="col-sm-3">
-                            <input type="text" name="captcha" class="form-control" id="" placeholder="密码">
+                            <input type="text" name="captcha" class="form-control" id="" value="{{old('captcha')}}" placeholder="密码">
                         </div>
                         <div class="col-sm-2">
                             <img onclick="$('#qq').attr('src','{{ URL('captcha/') }}'+'/'+ Math.random());" src="{{ URL('/captcha/1') }}" alt="验证码" title="刷新图片" width="100" height="40" id="qq" border="0" />

@@ -27,20 +27,20 @@
                                 <div class="form-group">
                                         <label for="" class="col-sm-4 control-label">注册手机号：</label>
                                         <div class="col-sm-5">
-                                                <input type="text" name="phone" class="form-control" id="" placeholder="手机">
+                                                <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="手机">
                                         </div>
                                 </div>
 
                                 <div class="form-group">
                                         <label for="" class="col-sm-4 control-label">密码：</label>
                                         <div class="col-sm-5">
-                                                <input type="password" name="password" class="form-control" id="" placeholder="密码">
+                                                <input type="password" name="password" value="{{old('password')}}" class="form-control" id="" placeholder="密码">
                                         </div>
                                 </div>
                                 <div class="form-group">
                                         <label for="" class="col-sm-4 control-label">验证码：</label>
                                         <div class="col-sm-3">
-                                                <input type="text" name="captcha" class="form-control" id="" placeholder="密码">
+                                                <input type="text" name="captcha"  value="{{old('captcha')}}" class="form-control" id="" placeholder="密码">
                                         </div>
                                         <div class="col-sm-2">
                                                 <img onclick="$('#qq').attr('src','{{ URL('captcha/') }}'+'/'+ Math.random());" src="{{ URL('/captcha/1') }}" alt="验证码" title="刷新图片" width="100" height="40" id="qq" border="0" />

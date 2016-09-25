@@ -108,7 +108,7 @@ class MyController extends LaravelController
         if($iid){
             $attend=1;
         }
-        $message=AshuiMessageBoard::where('user_id',$id)->paginate(10);
+        $message=AshuiMessageBoard::where('to_user_id',$id)->paginate(10);
         return view('home.my.messageboard')->withShare($message)->withId($id)->withAttend($attend);
     }
 
