@@ -55,7 +55,7 @@
                                 <div class="form-group ">
                                     <textarea class="form-control" name="" id="content" cols="90" rows="10" placeholder="想对他说啥，最多100字"></textarea>
                                 </div>
-                                <button type="button" onclick="addclick()" class="btn btn-lg btn-danger pull-right">发表</button>
+                                <button type="button" onclick="addclick()" class="btn btn-default pull-right">发表</button>
                             </form>
                         </div>
                 </div>

@@ -1,6 +1,7 @@
 @extends('layouts.home_app_core')
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{asset('edit/css/wangEditor.min.css')}}">
+    <link href="{{ URL::asset('Home/css/yifa.css')}}" rel="stylesheet">
     <style>
         body {
             padding-top: 50px;

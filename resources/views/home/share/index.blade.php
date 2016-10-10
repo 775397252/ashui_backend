@@ -1,6 +1,7 @@
 @extends('layouts.home_app_core')
 @section('content')
-        <div class="col-xs-3" class="pull-left" style="margin-top: 100px;width: 100px;z-index: 100;position: fixed">
+    <link href="{{ URL::asset('Home/css/share.css')}}" rel="stylesheet">
+    <div class="col-xs-3" class="pull-left" style="margin-top: 100px;width: 100px;z-index: 100;position: fixed">
                 <ul class="nav nav-tabs nav-stacked" >
                         <li ><a href="{{url('ashui/share')}}?type=0">文章</a></li>
                         <li><a href="{{url('ashui/share')}}?type=1">视频</a></li>
@@ -14,60 +15,63 @@
                         <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                                 @foreach($share as $k=>$v)
                                 <article style="margin: 10px" class="post">
-                                        <div class="post-head">
-                                                <h3 class="post-title pull-left">
-                                                    <a href="javascript:void(0)">阿水</a>
-                                                </h3>
-                                                <div class="clearfix"></div>
-                                                <time class="post-date pull-left">{{$v->created_at}}</time>
-                                                <div class="clearfix"><h3>{{$v->title}}</h3></div>
+                                    <div class="post-head" >
+                                        <div class="myname">
+                                            <a href="javascript:void(0)">阿水</a>
                                         </div>
-                                        <div class="text-left">
-                                                <p>
-                                                    {!! $v->content !!}
-                                                </p>
-                                                <span class="label label-default">评论</span><br><br>
-                                            <div id="list_{{$v->id}}">
-                                                @foreach($v->comments as $kk=>$vv)
-                                                    <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
-                                                @endforeach
-                                            </div>
-
-                                            {{--<a>查看所有>></a> <br>--}}
-                                            <br>
-                                                <div>
-                                                        <a onclick="addclick({{$v->id}},$(this))" href="javascript:void(0)" class="pull-left" style="margin-left: 100px;">阿水GOOD
-                                                            <span class="label label-danger">{{$v->click}}</span>
+                                        <div class="mytitle">
+                                            {{$v->title}}
+                                        </div>
+                                        <div>{{$v->created_at}}</div>
+                                    </div>
+                                    <div class="text-left">
+                                        <p>
+                                            {!! $v->content !!}
+                                        </p>
+                                        {{--评论点赞--}}
+                                        <div>
+                                            <a onclick="addclick({{$v->id}},$(this))" href="javascript:void(0)" class="pull-left" style="margin-left: 100px;">阿水GOOD
+                                                <span class="label label-danger">{{$v->click}}</span>
+                                            </a>
+                                            <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
+                                            <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
+                                                <div class="accordion-group">
+                                                    <div class="accordion-heading">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$k}}">
+                                                            阿水评论
                                                         </a>
-                                                        <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
-                                                        <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
-                                                                <div class="accordion-group">
-                                                                        <div class="accordion-heading">
-                                                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$k}}">
-                                                                                        阿水评论
-                                                                                </a>
-                                                                        </div>
-                                                                        <div id="collapse{{$k}}" class="accordion-body collapse" style="height: 0px; ">
-                                                                                <div class="accordion-inner">
-                                                                                        <form>
-                                                                                                <div class="form-group">
-                                                                                                        <textarea id="{{$v->id}}" name="" cols="60" rows=2 style="resize: none;"></textarea>
-                                                                                                </div>
-                                                                                                <input onclick="addcomment({{$v->id}})" class="btn btn-default pull-right" type="button" value="发布">
-                                                                                        </form>
-                                                                                </div>
-                                                                        </div>
+                                                    </div>
+                                                    <div id="collapse{{$k}}" class="accordion-body collapse" style="height: 0px; ">
+                                                        <div class="accordion-inner">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <textarea id="{{$v->id}}" name="" cols="60" rows=2 style="resize: none;"></textarea>
                                                                 </div>
+                                                                <input onclick="addcomment({{$v->id}})" class="btn btn-default pull-right" type="button" value="发布">
+                                                            </form>
                                                         </div>
+                                                    </div>
                                                 </div>
-                                                <footer class="post-footer clearfix">
-                                                        <div class="pull-left tag-list">
-                                                                <i class="fa fa-folder-open-o"></i>
-                                                        </div>
-                                                        <div class="pull-right share">
-                                                        </div>
-                                                </footer>
                                             </div>
+                                        </div>
+                                        <br>
+                                        {{--<span class="label label-default">评论</span><br><br>--}}
+                                        <div id="list_{{$v->id}}">
+                                            @foreach($v->comments as $kk=>$vv)
+                                                <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
+                                            @endforeach
+                                        </div>
+
+                                        {{--<a>查看所有>></a> <br>--}}
+
+                                        <footer class="post-footer clearfix">
+                                            <div class="pull-left tag-list">
+                                                <i class="fa fa-folder-open-o"></i>
+                                            </div>
+                                            <div class="pull-right share">
+                                            </div>
+                                        </footer>
+                                    </div>
                                 </article>
                                 <hr>
                                 @endforeach

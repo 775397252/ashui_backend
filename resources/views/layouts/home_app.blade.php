@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <title>ashui</title>
     <link href="{{ URL::asset('Home/css/bootstrap.min.css')}}" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 50px;
-        }
-        .starter-template {
-            padding: 40px 15px;
-            text-align: center;
-        }
-    </style>
+    <link href="{{ URL::asset('Home/css/home_app.css')}}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +16,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">阿水姑娘 我们的舞台 我们的时代</a>
+            <a class="navbar-brand title" href="/">阿水姑娘 我们的舞台 我们的时代</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
@@ -33,7 +25,7 @@
                     <li class="active"><a href="{{url('ashui/share')}}">浏览网站</a></li>
                     <li><a href="{{url('logout')}}">退出</a></li>
                 @else
-                    <li class="active"><a href="{{url('ashui/share')}}">游客浏览</a></li>
+                    <li class="active"><a href="{{url('ashui/share')}}">游客</a></li>
                     <li><a href="{{url('register')}}">注册</a></li>
                     <li><a href="{{url('login')}}">登录</a></li>
                 @endif

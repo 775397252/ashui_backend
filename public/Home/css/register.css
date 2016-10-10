@@ -1,0 +1,29 @@
+.register{
+    font-family: "KaiTi";
+    font-size: 18px;
+}
+.starter-template {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.register_title{
+    color: #0680C8;
+    font-size: 26px;
+}
+
+.alert-danger {
+    color: #FBFDF8;
+    background-color: #F39701;
+    border-color: #ebccd1;
+}
+.zc{
+    text-align: center !important;
+    margin-left: 160px;
+    color: #0680C8;
+    font-size: 26px;
+}
+
+.zc_now{
+    font-size: 22px;
+    margin-left: 160px;
+}

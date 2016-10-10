@@ -1,0 +1,46 @@
+.sign{
+    font-family: "KaiTi";
+}
+
+.as_girl{
+    font-size: 24px;
+    margin-left: 150px;
+    margin-top: 20px;
+    color: #0680C8;
+}
+.top_btm{
+    font-size: 24px;
+    margin-left: 300px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #0680C8;
+}
+.sign_left{
+    margin-left: 150px;
+    float: left;
+}
+.sign_right{
+    float: left;
+}
+.form-control{
+    width: 200px;
+}
+.validate_input{
+    width: 100px !important;
+}
+.validate_input input{
+    width: 100px;
+}
+.validate{
+    margin-left: 20px;
+}
+.alert-danger {
+    color: #FBFDF8;
+    background-color: #F39701;
+    border-color: #ebccd1;
+}
+
+.zc_now{
+    font-size: 22px;
+    margin-left: 60px;
+}

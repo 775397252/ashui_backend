@@ -1,5 +1,6 @@
 @extends('layouts.home_app_core')
 @section('content')
+    <link href="{{ URL::asset('Home/css/myas.css')}}" rel="stylesheet">
     @include('home.my.left')
     <div class="clearfix"></div>
     <div class="container">
@@ -7,27 +8,20 @@
             <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                 @foreach($share as $k=>$v)
                     <article style="margin: 10px" class="post">
-                        <div class="post-head">
-                            <h3 class="post-title pull-left">
+                        <div class="post-head" >
+                            <div class="myname">
                                 <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>
-                            </h3>
-                            <div class="clearfix"></div>
-                            <time class="post-date pull-left">{{$v->created_at}}</time>
-                            <div class="clearfix"><h3>{{$v->title}}</h3></div>
+                            </div>
+                            <div class="mytitle">
+                                {{$v->title}}
+                            </div>
+                            <div>{{$v->created_at}}</div>
                         </div>
                         <div class="text-left">
                             <p>
                                 {!! $v->content !!}
                             </p>
-                            <span class="label label-default">评论</span><br><br>
-                            <div id="list_{{$v->id}}">
-                                @foreach($v->comments as $kk=>$vv)
-                                    <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
-                                @endforeach
-                            </div>
-
-                            {{--<a>查看所有>></a> <br>--}}
-                            <br>
+                            {{--评论点赞--}}
                             <div>
                                 <a onclick="addclick({{$v->id}},$(this))" href="javascript:void(0)" class="pull-left" style="margin-left: 100px;">阿水GOOD
                                     <span class="label label-danger">{{$v->click}}</span>
@@ -53,6 +47,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            {{--<span class="label label-default">评论</span><br><br>--}}
+                            <div id="list_{{$v->id}}">
+                                @foreach($v->comments as $kk=>$vv)
+                                    <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
+                                @endforeach
+                            </div>
+
+                            {{--<a>查看所有>></a> <br>--}}
+
                             <footer class="post-footer clearfix">
                                 <div class="pull-left tag-list">
                                     <i class="fa fa-folder-open-o"></i>

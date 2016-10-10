@@ -1,0 +1,16 @@
+.nav-stacked{
+    font-size: 18px;
+}
+.myname{
+    font-size: 18px;
+    display: inline-block;
+}
+.mytitle{
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 200px;
+}
+
+.starter-template{
+    text-align: left;
+}

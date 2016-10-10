@@ -1,7 +1,7 @@
 @extends('layouts.home_app_core')
 @section('content')
     @include('home.my.left')
-
+    <link href="{{ URL::asset('Home/css/messageboard.css')}}" rel="stylesheet">
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
