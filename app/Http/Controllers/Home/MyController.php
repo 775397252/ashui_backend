@@ -26,7 +26,7 @@ class MyController extends LaravelController
             ->where('user_id',session('member_id'))
             ->leftJoin('members', 'members.id', '=', 'ashui_attend.attend_user_id')
             ->get();
-        return view('home.my.attend')->withAttend($attend);
+        return view('home.my.attend')->withAttend($attend)->withLight(6);
     }
 
     //资料修个
@@ -56,7 +56,7 @@ class MyController extends LaravelController
             }
         }
         $usrtinfo=Member::where('id',$user_id)->first();
-        return view('home.my.updateinfo')->withInfo($usrtinfo);
+        return view('home.my.updateinfo')->withInfo($usrtinfo)->withLight(6);
     }
 
     //主页
@@ -65,7 +65,7 @@ class MyController extends LaravelController
         $user_id=session('member_id');
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
         $share=$query->where('user_id',$user_id)->paginate(2);
-        return view('home.my.index')->withShare($share);
+        return view('home.my.index')->withShare($share)->withLight(6);
     }
 
     //阿水评论
@@ -109,7 +109,7 @@ class MyController extends LaravelController
             $attend=1;
         }
         $message=AshuiMessageBoard::where('to_user_id',$id)->paginate(10);
-        return view('home.my.messageboard')->withShare($message)->withId($id)->withAttend($attend);
+        return view('home.my.messageboard')->withLight(6)->withShare($message)->withId($id)->withAttend($attend);
     }
 
 

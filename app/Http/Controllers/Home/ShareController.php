@@ -18,7 +18,7 @@ class ShareController extends LaravelController
         $query=AshuiConfession::orderBy('id', 'desc')->with('comments');
         if(!is_null($type)) $query->where('type',$type);
         $share=$query->paginate(2);
-        return view('home.share.index')->withShare($share);
+        return view('home.share.index')->withShare($share)->withLight(4);
     }
 
     //阿水分享评论

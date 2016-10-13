@@ -124,7 +124,7 @@ class UserController extends Controller
         }
         $message=AshuiMessageBoard::where('to_user_id',$id)->with('users')->orderBy('id', 'desc')->paginate(10);
      // dd($message);
-       return view('home.user.messageboard')->withShare($message)->withId($id)->withAttend($attend);
+       return view('home.user.messageboard')->withShare($message)->withId($id)->withAttend($attend)->withLight(0);
     }
     public function attend(Request $request){
             $data=$request->all();
@@ -145,6 +145,6 @@ class UserController extends Controller
     {
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
         $share=$query->where('user_id',$id)->paginate(2);
-        return view('home.user.main')->withShare($share)->withId($id);
+        return view('home.user.main')->withShare($share)->withId($id)->withLight(0);
     }
 }

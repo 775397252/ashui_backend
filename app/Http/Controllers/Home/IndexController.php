@@ -9,7 +9,7 @@ class IndexController extends LaravelController
 
     public function index()
     {
-        return view('home.index');
+        return view('home.index')->withLight(1);
     }
 
 }

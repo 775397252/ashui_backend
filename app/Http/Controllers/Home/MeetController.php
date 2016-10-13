@@ -31,7 +31,7 @@ class MeetController extends LaravelController
             }
             return response()->json(['state' => 0, 'msg' => '失败！']);
         }
-        return view('home.meet.wall');
+        return view('home.meet.wall')->withLight(3);
     }
     public function dove(Request $request){
         if($request->isMethod('post')){
@@ -62,7 +62,7 @@ class MeetController extends LaravelController
                 $say[]=$has_other;
             }
         }
-        return view('home.meet.dove')->withHas($has)->withSay($say);
+        return view('home.meet.dove')->withHas($has)->withSay($say)->withLight(3);
     }
 
     //阿水表达
@@ -70,7 +70,7 @@ class MeetController extends LaravelController
     {
         $query=Biaobai::orderBy('id', 'desc')->with('comments')->with('users');
         $share=$query->paginate(2);
-        return view('home.meet.index')->withShare($share);
+        return view('home.meet.index')->withShare($share)->withLight(3);
     }
 
     //阿水评论
