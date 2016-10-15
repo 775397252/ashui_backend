@@ -16,7 +16,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand as_title" href="#">阿水头条 今天你是头条么</a>
+            <a class="navbar-brand as_title" href="#">
+                {{$title or ""}}
+            </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">

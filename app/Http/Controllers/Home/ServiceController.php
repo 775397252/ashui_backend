@@ -15,7 +15,9 @@ class ServiceController extends LaravelController
     //打印
     public function upprint(Request $request)
     {
-        return view('home.service.upprint')->withLight(5);
+        return view('home.service.upprint')
+            ->withTitle("阿水服务，提供最好的服务")
+            ->withLight(5);
     }
 
     public function printprice(Request $request)
@@ -51,7 +53,9 @@ class ServiceController extends LaravelController
 
     public function ashui_book(){
         $books=AshuiBook::orderBy('id', 'desc')->paginate(9);
-        return view('home.service.ashui_book')->withBook($books)->withLight(5);
+        return view('home.service.ashui_book')
+            ->withTitle("阿水服务，提供最好的服务")
+            ->withBook($books)->withLight(5);
     }
 
     public function book_detail($id){

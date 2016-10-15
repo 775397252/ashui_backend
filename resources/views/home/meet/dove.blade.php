@@ -4,15 +4,15 @@
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
-                    <label style="margin: 20px;color: #00be67" for="">暗恋，也是一道风景</label>
+                    <label style="margin: 20px;color: #00be67; font-size: 20px"  for="">暗恋，也是一道风景</label>
 
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            查看我的表白信息
+                                        <a class="collapsed" style="font-size: 18px" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            谁给我表白了？
                                         </a>
                                     </h4>
                                 </div>
@@ -31,9 +31,9 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="heading">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse"
+                                        <a class="collapsed" style="font-size: 18px" data-toggle="collapse" data-parent="#accordion" href="#collapse"
                                            aria-expanded="false" aria-controls="collapse">
-                                            查看我的互相喜欢信息
+                                            love each other
                                         </a>
                                     </h4>
                                 </div>
@@ -50,10 +50,10 @@
                         </div>
                         <form role="form">
                                 <div class="form-group">
-                                    <input type="text"  class="form-control" id="to_user_id" placeholder="TA的ID">
+                                    <input type="text"  class="form-control" id="to_user_id" style="font-size: 18px" placeholder="TA的ID">
                                 </div>
                                 <div class="form-group ">
-                                    <textarea class="form-control" maxlength="150" name="" id="content" cols="90" rows="10" placeholder="想对他说啥，最多150字"></textarea>
+                                    <textarea class="form-control" maxlength="150" name="" id="content" style="font-size: 18px" cols="90" rows="10" placeholder="想对他说啥，最多150字"></textarea>
                                 </div>
                                 <button type="button" onclick="addclick()" class="btn btn-default pull-right">发表</button>
                             </form>

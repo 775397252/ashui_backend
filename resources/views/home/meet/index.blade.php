@@ -11,7 +11,9 @@
                                 <article style="margin: 10px" class="post">
                                     <div class="post-head" >
                                         <div class="myname">
+{{--                                            <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>--}}
                                             <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>
+
                                         </div>
                                         <div class="mytitle">
                                             {{$v->title}}
@@ -52,7 +54,8 @@
                                         {{--<span class="label label-default">评论</span><br><br>--}}
                                         <div id="list_{{$v->id}}">
                                             @foreach($v->comments as $kk=>$vv)
-                                                <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
+                                                <a onclick="javascript:1" style="text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
+                                                {{--<mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>--}}
                                             @endforeach
                                         </div>
 

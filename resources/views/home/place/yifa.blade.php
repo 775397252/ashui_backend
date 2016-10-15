@@ -38,7 +38,7 @@
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
-                    <label style="margin: 20px;color: #00be67" for="">似水流年，花样年华，在这里相遇，邂逅你，遇见美好</label>
+                    <label style="margin: 20px;color: #00be67;font-size: 24px" for="">Free to talk and Be yourself</label>
 
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                         <form method="post" action="">

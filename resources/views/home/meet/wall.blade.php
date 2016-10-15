@@ -9,10 +9,10 @@
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                             <form role="form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="title" placeholder="标题">
+                                    <input type="text" class="form-control" id="title" style="font-size: 18px" placeholder="标题">
                                 </div>
                                 <div class="form-group ">
-                                    <textarea  maxlength="150"   class="form-control" name="" id="content" cols="90" rows="10" placeholder="表白内容，最多150字"></textarea>
+                                    <textarea  maxlength="150"   class="form-control" name="" id="content" style="font-size: 18px" cols="90" rows="10" placeholder="表白内容，最多150字"></textarea>
                                 </div>
                                 <button type="button" onclick="addclick()" class="btn btn-default pull-right">发表</button>
                             </form>

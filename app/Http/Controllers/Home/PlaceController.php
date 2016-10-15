@@ -32,7 +32,9 @@ class PlaceController extends LaravelController
             }
             return response()->json(['state' => 0, 'msg' => '失败！']);
         }
-        return view('home.place.yifa')->withLight(2);
+        return view('home.place.yifa')
+            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withLight(2);
     }
     //阿水广场
     public function index(Request $request)
@@ -41,7 +43,10 @@ class PlaceController extends LaravelController
         $share=$query->where('type','<>',2)->orWhere(function ($query) {
             $query->where('user_id',  session("member_id"));
         })->paginate(5);
-        return view('home.place.index')->withShare($share)->withLight(2);
+        return view('home.place.index')
+            ->withShare($share)
+            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withLight(2);
     }
 
     //阿水评论
@@ -75,7 +80,10 @@ class PlaceController extends LaravelController
         $share=$query->where('type','<>',2)->orWhere(function ($query) {
             $query->where('user_id',  session("member_id"));
         })->limit(10)->get();
-        return view('home.place.top')->withShare($share)->withLight(1);
+        return view('home.place.top')
+            ->withShare($share)
+            ->withTitle("阿水头条，今天你是头条吗")
+            ->withLight(1);
     }
 
     //特别关注
@@ -92,6 +100,8 @@ class PlaceController extends LaravelController
         $share=$query->where('type','<>',2)->whereIn('user_id',$peopel)->paginate(5);
         //dd($share);
 
-        return view('home.place.index')->withShare($share)->withLight(2);
+        return view('home.place.index')
+            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withShare($share)->withLight(2);
     }
 }
