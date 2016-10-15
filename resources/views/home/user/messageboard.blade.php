@@ -17,7 +17,7 @@
                         <form role="form" method="post" action="" onsubmit="return check(this)">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="form-group ">
-                                    <textarea class="form-control" name="comment" id="comment" cols="90" rows="10" placeholder="想说点什么"></textarea>
+                                    <textarea class="form-control" style="font-size: 18px;" name="comment" id="comment" cols="90" rows="10"  placeholder="想说点什么"></textarea>
                                 </div>
                                 <input type="hidden" name="to_user_id" value="{{$id}}">
                                 <input type="hidden" name="user_id" value="{{session('member_id')}}">

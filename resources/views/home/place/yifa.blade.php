@@ -43,7 +43,7 @@
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                         <form method="post" action="">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="title" placeholder="标题">
+                                <input type="text" style="font-size: 18px" class="form-control" id="title" placeholder="标题">
                             </div>
                            <div class="form-group">
                                 <div id="div1">
