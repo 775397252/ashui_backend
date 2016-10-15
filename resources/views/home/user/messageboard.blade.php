@@ -50,7 +50,7 @@
         </div><!-- /.container -->
     <script type="text/javascript">
         function attent(p){
-            var uid=<?php $id=session('member_id'); if($id) echo $id;else echo 0; ?>;
+            var uid='<?php $ids=session('member_id'); if($ids) echo $ids;else echo 0; ?>';
             if(uid==0){
                 alert('请先登录！')
                 $('.collapse').collapse('hide');

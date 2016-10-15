@@ -68,7 +68,7 @@
                                 <hr>
                                 @endforeach
                                 <nav>
-                                    {!! $share->render() !!}
+                                    {{--{!! $share->render() !!}--}}
                                 </nav>
                         </div>
                 </div>

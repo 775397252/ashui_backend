@@ -18,12 +18,12 @@
             @endif
                 <form class="form-horizontal" method="post" action="">
                     {!! csrf_field() !!}
-                    <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">手机</label>
-                                <div class="col-sm-5">
-                                        <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="">
-                                </div>
-                        </div>
+                    {{--<div class="form-group">--}}
+                                {{--<label for="" class="col-sm-4 control-label">手机</label>--}}
+                                {{--<div class="col-sm-5">--}}
+                                        {{--<input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="">--}}
+                                {{--</div>--}}
+                        {{--</div>--}}
                     <div class="form-group">
                         <label for="" class="col-sm-9 control-label zc">注册</label>
                     </div>

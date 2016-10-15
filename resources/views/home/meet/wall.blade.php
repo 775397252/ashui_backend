@@ -12,7 +12,7 @@
                                     <input type="text" class="form-control" id="title" placeholder="标题">
                                 </div>
                                 <div class="form-group ">
-                                    <textarea class="form-control" name="" id="content" cols="90" rows="10" placeholder="表白内容，最多100字"></textarea>
+                                    <textarea  maxlength="150"   class="form-control" name="" id="content" cols="90" rows="10" placeholder="表白内容，最多150字"></textarea>
                                 </div>
                                 <button type="button" onclick="addclick()" class="btn btn-default pull-right">发表</button>
                             </form>

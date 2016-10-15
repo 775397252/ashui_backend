@@ -4,16 +4,20 @@
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
-                    <label style="margin: 20px;color: red" for="">注意：不输入密码则不修改密码</label>
+                    @if(isset($ok)&&$ok==1)
+                        <label style="margin: 20px;color: green" for="">修改成功！</label>
+                    @else
+                        <label style="margin: 20px;color: red" for="">注意：不输入密码则不修改密码</label>
+                    @endif
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
                         <form class="form-horizontal" method="post" action="" onsubmit="return check()">
                             {!! csrf_field() !!}
-                            <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">手机</label>
-                                <div class="col-sm-5">
-                                    <input type="text" name="phone" value="{{$info->phone}}" class="form-control" id="" placeholder="手机">
-                                </div>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="" class="col-sm-4 control-label">手机</label>--}}
+                                {{--<div class="col-sm-5">--}}
+                                    {{--<input type="text" name="phone" value="{{$info->phone}}" class="form-control" id="" placeholder="手机">--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">用户名</label>
                                 <div class="col-sm-5">

@@ -40,7 +40,7 @@ class PlaceController extends LaravelController
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
         $share=$query->where('type','<>',2)->orWhere(function ($query) {
             $query->where('user_id',  session("member_id"));
-        })->paginate(2);
+        })->paginate(5);
         return view('home.place.index')->withShare($share)->withLight(2);
     }
 
@@ -74,7 +74,7 @@ class PlaceController extends LaravelController
         $query=AshuiPlace::orderBy('weight', 'desc')->with('comments')->with('users');
         $share=$query->where('type','<>',2)->orWhere(function ($query) {
             $query->where('user_id',  session("member_id"));
-        })->paginate(2);
+        })->limit(10)->get();
         return view('home.place.top')->withShare($share)->withLight(1);
     }
 
@@ -89,9 +89,9 @@ class PlaceController extends LaravelController
             }
         }
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
-        $share=$query->where('type','<>',2)->orWhere(function ($query) {
-            $query->where('user_id',  session("member_id"));
-        })->whereIn('user_id',$peopel)->paginate(2);
+        $share=$query->where('type','<>',2)->whereIn('user_id',$peopel)->paginate(5);
+        //dd($share);
+
         return view('home.place.index')->withShare($share)->withLight(2);
     }
 }

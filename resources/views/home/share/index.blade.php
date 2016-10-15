@@ -55,8 +55,9 @@
                                             </div>
                                         </div>
                                         <br>
+                                        <p></p>
                                         {{--<span class="label label-default">评论</span><br><br>--}}
-                                        <div id="list_{{$v->id}}">
+                                        <div id="list_{{$v->id}}" style="word-wrap:break-word;">
                                             @foreach($v->comments as $kk=>$vv)
                                                 <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
                                             @endforeach

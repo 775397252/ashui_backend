@@ -35,8 +35,7 @@ class MyController extends LaravelController
         if($request->isMethod('post')){
             $data=$request->all();
             if($data['password']){
-                $ok=DB::table('members')->update([
-                    'phone'=>$data['phone'],
+                $ok=DB::table('members')->where('id',$user_id)->update([
                     'username'=>$data['username'],
                     'school'=>$data['school'],
                     'is_love'=>$data['is_love'],
@@ -45,8 +44,7 @@ class MyController extends LaravelController
                     'created_at'=>Carbon::now(),
                 ]);
             }else{
-                $ok=DB::table('members')->update([
-                    'phone'=>$data['phone'],
+                $ok=DB::table('members')->where('id',$user_id)->update([
                     'username'=>$data['username'],
                     'school'=>$data['school'],
                     'is_love'=>$data['is_love'],
@@ -54,6 +52,9 @@ class MyController extends LaravelController
                     'created_at'=>Carbon::now(),
                 ]);
             }
+            $usrtinfo=Member::where('id',$user_id)->first();
+            return view('home.my.updateinfo')->withInfo($usrtinfo)->withOk(1)->withLight(6);
+            die;
         }
         $usrtinfo=Member::where('id',$user_id)->first();
         return view('home.my.updateinfo')->withInfo($usrtinfo)->withLight(6);

@@ -20,17 +20,15 @@ class UserController extends Controller
     {
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
-            'phone' => 'required|numeric',
             'password' => 'required',
             'captcha' => 'required|max:255',
         ],[
             'required' => ':attribute 必须填写。',
-            'numeric' => ' :attribute 必须为电话号码格式',
         ])->after(function($validator)use($request) {
             if (Session::get('captcha')!= $request->get('captcha')) {
                 $validator->errors()->add('field', '验证码错误!');
             }
-            $userinfo=Member::where('phone',$request->get('phone'))->first();
+            $userinfo=Member::where('email',$request->get('phone'))->first();
             if(!$userinfo){
                 $validator->errors()->add('field', '用户不存在!');
             }else if($request->get('password')!=$userinfo->password){
@@ -43,9 +41,9 @@ class UserController extends Controller
                     ->withErrors($validator)
                     ->withInput();
         }
-        $userinfo=Member::where('phone',$request->get('phone'))->first();
+        $userinfo=Member::where('email',$request->get('phone'))->first();
         session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
-        return redirect('/');
+        return redirect('ashui/top');
     }
         return view('home.user.login');
     }
@@ -53,16 +51,15 @@ class UserController extends Controller
     {
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
-                'phone' => 'required|numeric|unique:members',
                 'email' => 'required|email|unique:members',
-                'username' => 'required',
+                'username' => 'required|max:20',
                 'password' => 'required|confirmed',
                 'captcha' => 'required|max:255',
             ],[
                 'required' => ':attribute 必须填写。',
                 'confirmed' => '密码和确认密码不相同。',
                 'email' => '必须为邮箱格式。',
-                'numeric' => ' :attribute 必须为电话号码格式',
+                'max' => '最多输入20个字符。',
                 'unique' => ' :attribute 已经存在。',
             ])->after(function($validator)use($request) {
                 if (Session::get('captcha')!= $request->get('captcha')) {
@@ -77,9 +74,9 @@ class UserController extends Controller
            // dd($request->all());
             $info=Member::create($request->all());
             //新添加直接登录
-            $userinfo=Member::where('phone',$request->get('phone'))->first();
-            session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
-            return redirect('/');
+            $userinfo=Member::where('email',$request->get('email'))->first();
+            session(['member_id' =>$userinfo->id,'member_name'=>$userinfo->username]);
+            return redirect('ashui/top');
             //if($info) return redirect('login');
         }
         return view('home.user.register');
