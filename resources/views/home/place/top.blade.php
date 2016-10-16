@@ -26,21 +26,19 @@
                                                 <span class="label label-danger">{{$v->click}}</span>
                                             </a>
                                             <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
-                                            <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
+                                            <div class="accordion pull-right" style="margin-right: 100px;">
                                                 <div class="accordion-group">
                                                     <div class="accordion-heading">
                                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$k}}">
                                                             阿水评论
                                                         </a>
                                                     </div>
-                                                    <div id="collapse{{$k}}" class="accordion-body collapse" style="height: 0px; ">
+                                                    <div id="collapse{{$k}}" class="accordion-body collapse " >
                                                         <div class="accordion-inner">
-                                                            <form>
                                                                 <div class="form-group">
                                                                     <textarea id="{{$v->id}}" name="" cols="60" rows=2 style="resize: none;"></textarea>
                                                                 </div>
                                                                 <input onclick="addcomment({{$v->id}})" class="btn btn-default pull-right" type="button" value="发布">
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -48,10 +46,11 @@
                                         </div>
                                         <br>
                                         {{--<span class="label label-default">评论</span><br><br>--}}
-                                        <div id="list_{{$v->id}}">
+                                        <div id="list_{{$v->id}}" class="clearfix col-xs-12">
+
                                             @foreach($v->comments as $kk=>$vv)
                                                 {{--<mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>--}}
-                                                <a onclick="javascript:1" style="text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
+                                                <a onclick="javascript:1" style="text-align:left;text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
                                             @endforeach
                                         </div>
 

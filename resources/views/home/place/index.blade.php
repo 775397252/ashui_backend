@@ -50,7 +50,7 @@
                                         </div>
                                         <br>
                                         {{--<span class="label label-default">评论</span><br><br>--}}
-                                        <div id="list_{{$v->id}}">
+                                        <div id="list_{{$v->id}}" class="clearfix col-xs-12>
                                             @foreach($v->comments as $kk=>$vv)
                                                 <a onclick="javascript:1" style="text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
                                             @endforeach
