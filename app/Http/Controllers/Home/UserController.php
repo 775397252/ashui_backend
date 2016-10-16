@@ -45,7 +45,8 @@ class UserController extends Controller
         session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
         return redirect('ashui/top');
     }
-        return view('home.user.login');
+        return view('home.user.login')
+            ->withLoginActive('active');
     }
     public function Register(Request $request)
     {
@@ -80,7 +81,8 @@ class UserController extends Controller
             return redirect('ashui/top');
             //if($info) return redirect('login');
         }
-        return view('home.user.register');
+        return view('home.user.register')
+            ->withRegisterActive('active');
     }
     public function captcha($tmp)
     {

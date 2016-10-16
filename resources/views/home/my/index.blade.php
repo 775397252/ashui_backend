@@ -51,7 +51,8 @@
                             {{--<span class="label label-default">评论</span><br><br>--}}
                             <div id="list_{{$v->id}}">
                                 @foreach($v->comments as $kk=>$vv)
-                                    <mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>
+                                    {{--<mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>--}}
+                                    <a onclick="javascript:1" style="text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
                                 @endforeach
                             </div>
 

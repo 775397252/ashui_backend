@@ -30,11 +30,11 @@
                                 @foreach($share as $k=>$v)
                                 <article style="margin: 10px" class="post">
                                         <div class="post-head">
-                                                <h3 class="post-title pull-left">
+                                                <h4 class="post-title pull-left" style="line-height: 1.45; letter-spacing: 1px; text-align: left">
                                                     <a href="{{url('ashui/messageboard',[$v->users->id])}}">
                                                         {{$v->users->username}}
                                                     </a>:{{$v->comment}}
-                                                </h3>
+                                                </h4>
                                                 <div class="clearfix"></div>
                                                 <time class="post-date pull-left">{{$v->created_at}}</time>
                                                 <div class="clearfix"><h3></h3></div>

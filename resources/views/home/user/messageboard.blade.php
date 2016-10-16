@@ -1,7 +1,7 @@
 @extends('layouts.home_app_core')
 @section('content')
+    <link href="{{ URL::asset('Home/css/messageboard.css')}}" rel="stylesheet">
     @include('home.user.left')
-
         <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
@@ -17,7 +17,7 @@
                         <form role="form" method="post" action="" onsubmit="return check(this)">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="form-group ">
-                                    <textarea class="form-control" style="font-size: 18px;" name="comment" id="comment" cols="90" rows="10"  placeholder="想说点什么"></textarea>
+                                    <textarea class="form-control" style="font-size: 18px;" name="comment" id="comment" cols="90" rows="10"  placeholder="想对TA说点什么"></textarea>
                                 </div>
                                 <input type="hidden" name="to_user_id" value="{{$id}}">
                                 <input type="hidden" name="user_id" value="{{session('member_id')}}">
@@ -30,11 +30,11 @@
                                 @foreach($share as $k=>$v)
                                 <article style="margin: 10px" class="post">
                                         <div class="post-head">
-                                                <h3 class="post-title pull-left">
+                                                <h4 style="letter-spacing: 1px; text-align: left; line-height: 1.45" class="post-title pull-left">
                                                     <a href="{{url('ashui/messageboard',[$v->users->id])}}">
                                                         {{$v->users->username}}
                                                     </a>:{{$v->comment}}
-                                                </h3>
+                                                </h4>
                                                 <div class="clearfix"></div>
                                                 <time class="post-date pull-left">{{$v->created_at}}</time>
                                                 <div class="clearfix"><h3></h3></div>

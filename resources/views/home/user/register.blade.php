@@ -80,7 +80,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                                <div class="col-sm-offset-4 col-sm-5">
+                                <div class="" style="float: left;margin-left: 250px">
+                                    点击「注册」按钮，即代表你同意
+                                    <a href="{{url('ashui/rule')}}">《阿水姑娘规约三章》</a>
                                         <button type="submit" class="btn alert-danger zc_now">立即注册</button>
                                 </div>
                         </div>

@@ -148,6 +148,8 @@ Route::any('/ashui/messageboard/{id}', 'Home\UserController@MessageBoard');
 Route::any('/ashui/main/{id}', 'Home\UserController@main');
 //关注
 Route::any('/ashui/attend', 'Home\UserController@attend');
+//服务条款
+Route::any('/ashui/rule', 'Home\RuleController@index');
 //我的阿水
 Route::get('/my/index', 'Home\MyController@index');
 Route::get('/my/attend', 'Home\MyController@attend');
