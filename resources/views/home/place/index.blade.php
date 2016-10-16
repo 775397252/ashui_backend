@@ -35,7 +35,7 @@
                                                             阿水评论
                                                         </a>
                                                     </div>
-                                                    <div id="collapse{{$k}}" class="accordion-body collapse" style="height: 0px; ">
+                                                    <div id="collapse{{$k}}" class=" collapse" style="height: 0px; ">
                                                         <div class="accordion-inner">
                                                             <form>
                                                                 <div class="form-group">

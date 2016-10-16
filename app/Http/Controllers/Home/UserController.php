@@ -137,7 +137,6 @@ class UserController extends Controller
 
     }
     //主页
-    //主页
     public function main($id)
     {
         $query=AshuiPlace::orderBy('id', 'desc')->with('comments')->with('users');
