@@ -28,6 +28,7 @@
                         <label for="" class="col-sm-9 control-label zc">注册</label>
                     </div>
                    <div class="form-group">
+                       <span style="color: red;vertical-align: middle ">*</span>
                                 <label for="" class="col-sm-4 control-label">用户名</label>
                                 <div class="col-sm-5">
                                         <input type="text" name="username" value="{{old('username')}}" class="form-control" id="" placeholder="">
@@ -42,6 +43,7 @@
                         {{--</div>--}}
 
                         <div class="form-group">
+                            <span style="color: red;vertical-align: middle ">*</span>
                                 <label for="" class="col-sm-4 control-label">邮箱</label>
                                 <div class="col-sm-5">
                                         <input type="email" name="email" value="{{old('email')}}" class="form-control" id="" placeholder="">
@@ -54,18 +56,21 @@
                                 </div>
                         </div>
                         <div class="form-group">
+                            <span style="color: red;vertical-align: middle ">*</span>
                                 <label for="" class="col-sm-4 control-label">密码</label>
                                 <div class="col-sm-5">
                                         <input type="password" name="password" value="{{old('password')}}" class="form-control" id="" placeholder="">
                                 </div>
                         </div>
                         <div class="form-group">
+                            <span style="color: red;vertical-align: middle ">*</span>
                                 <label for="" class="col-sm-4 control-label">再次输入密码</label>
                                 <div class="col-sm-5">
                                         <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}" class="form-control" id="" placeholder="">
                                 </div>
                         </div>
                     <div class="form-group">
+                        <span style="color: red;vertical-align: middle ">*</span>
                         <label for="" class="col-sm-4 control-label">验证码</label>
                         <div class="col-sm-3">
                             <input type="text" name="captcha" class="form-control" id="" value="{{old('captcha')}}" placeholder="">
@@ -75,7 +80,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                                <div class="col-sm-offset-4 col-sm-5">
+                                <div class="" style="float: left;margin-left: 250px">
+                                    点击「注册」按钮，即代表你同意
+                                    <a href="{{url('ashui/rule')}}">《阿水姑娘规约三章》</a>
                                         <button type="submit" class="btn alert-danger zc_now">立即注册</button>
                                 </div>
                         </div>

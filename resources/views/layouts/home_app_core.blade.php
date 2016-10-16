@@ -28,7 +28,7 @@
                 <li @if($light==4) class="active" @endif><a href="{{url('ashui/share')}}">阿水分享</a></li>
                 <li @if($light==5) class="active" @endif><a href="{{url('ashui/service/upprint')}}">阿水服务</a></li>
                 @if(session('member_id'))
-                    <li @if($light==6) class="active" @endif><a href="{{url('my/index')}}">用户名：{{session('member_name')}}</a></li>
+                    <li @if($light==6) class="active" @endif><a href="{{url('my/index')}}">user：{{session('member_name')}}</a></li>
                     <li><a href="{{url('logout')}}">退出</a></li>
                 {{--<li><a href="javascript:void(0)">用户名：{{session('member_name')}}</a></li>--}}
                     @else

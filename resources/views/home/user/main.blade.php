@@ -5,7 +5,7 @@
     <div class="container">
         <div class="starter-template">
             <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
-                <button type="button" disabled class="btn btn-warning pull-left">用户ID：{{$id}}</button>
+                <button type="button" style="padding: 2px;" disabled class="btn btn-warning pull-left">用户ID：{{$id}}</button>
                 <br>
                 <br>
                 <br>

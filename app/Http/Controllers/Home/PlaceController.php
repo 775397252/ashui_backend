@@ -33,7 +33,7 @@ class PlaceController extends LaravelController
             return response()->json(['state' => 0, 'msg' => '失败！']);
         }
         return view('home.place.yifa')
-            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withTitle("阿水广场，世界在这里绽放")
             ->withLight(2);
     }
     //阿水广场
@@ -45,7 +45,7 @@ class PlaceController extends LaravelController
         })->paginate(5);
         return view('home.place.index')
             ->withShare($share)
-            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withTitle("阿水广场，世界在这里绽放")
             ->withLight(2);
     }
 
@@ -101,7 +101,7 @@ class PlaceController extends LaravelController
         //dd($share);
 
         return view('home.place.index')
-            ->withTitle("阿水广场，今世界在这里绽放")
+            ->withTitle("阿水广场，世界在这里绽放")
             ->withShare($share)->withLight(2);
     }
 }

@@ -56,7 +56,7 @@
                                             @endforeach
                                         </div>
 
-                                        {{--<a>查看所有>></a> <br>--}}
+                                        <div id="showall"></div> <br>
 
                                         <footer class="post-footer clearfix">
                                             <div class="pull-left tag-list">

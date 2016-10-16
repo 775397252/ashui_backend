@@ -25,5 +25,9 @@
 
 .zc_now{
     font-size: 22px;
-    margin-left: 160px;
+    margin-left: 20px;
+}
+
+.form-control{
+    font-size: 16px;!important;
 }

@@ -25,9 +25,9 @@
                     <li class="active"><a href="{{url('ashui/share')}}">浏览网站</a></li>
                     <li><a href="{{url('logout')}}">退出</a></li>
                 @else
-                    <li class="active"><a href="{{url('ashui/share')}}">游客</a></li>
-                    <li><a href="{{url('register')}}">注册</a></li>
-                    <li><a href="{{url('login')}}">登录</a></li>
+                    <li class="{{$youke_active or ''}}"><a href="{{url('ashui/top')}}">游客</a></li>
+                    <li class="{{$register_active or ''}}"><a href="{{url('register')}}">注册</a></li>
+                    <li class="{{$login_active or ''}}"><a href="{{url('login')}}">登录</a></li>
                 @endif
             </ul>
         </div>
