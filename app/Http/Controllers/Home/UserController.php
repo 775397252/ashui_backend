@@ -50,16 +50,17 @@ class UserController extends Controller
     public function Register(Request $request)
     {
         if ($request->isMethod('post')) {
+//            dd($request->all());
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email|unique:members',
                 'username' => 'required|max:20',
                 'password' => 'required|confirmed',
                 'captcha' => 'required|max:255',
             ],[
-                'required' => ':attribute 必须填写。',
+                'required' => ':attribute 没有填写。',
                 'confirmed' => '密码和确认密码不相同。',
                 'email' => '必须为邮箱格式。',
-                'max' => '最多输入20个字符。',
+                'max' => '用户名长度最多20个字符。',
                 'unique' => ' :attribute 已经存在。',
             ])->after(function($validator)use($request) {
                 if (Session::get('captcha')!= $request->get('captcha')) {
