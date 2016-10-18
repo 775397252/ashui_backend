@@ -38,6 +38,7 @@ class UserController extends Controller
         });
         if ($validator->fails()) {
             return redirect('login')
+                
                     ->withErrors($validator)
                     ->withInput();
         }
