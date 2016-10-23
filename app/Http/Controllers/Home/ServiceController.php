@@ -46,7 +46,7 @@ class ServiceController extends LaravelController
                 'created_at'=>Carbon::now(),
             ]);
             $money=$number*0.1+0.5;
-            return view('home.service.printprice')->withMoney($money);
+            return view('home.service.printprice')->withMoney($money)->withLight(5);
         }
         return redirect('/ashui/service/upprint');
     }
