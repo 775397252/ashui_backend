@@ -39,27 +39,31 @@
         <div class="container">
                 <div class="starter-template">
                     <label style="margin: 20px;color: #00be67;font-size: 24px" for="">Free to talk and Be yourself</label>
-
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
-                        <form method="post" action="">
+                        <form method="post" action="{{url('ashui/place/yifa')}}" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="form-group">
-                                <input type="text" style="font-size: 18px" class="form-control" id="title" placeholder="标题">
+                                <input type="text" name="title" style="font-size: 18px" class="form-control" id="title" placeholder="标题">
                             </div>
                            <div class="form-group">
                                 <div id="div1">
-
+                                    <script id="container" name="content" type="text/plain">
+                                    </script>
                                 </div>
                             </div>
-                            <input class="btn btn-default pull-right" onclick="addclick()" type="button" value="发布">
+                            <input type="hidden" value="<?=session('member_id')?>" name="user_id" id="">
+                    <div class="form-group">
+                    <input class="btn btn-default pull-right" onclick="addclick()" type="submit" value="发布">
                             <label class="checkbox-inline">
-                                <input type="radio" name="is_see" checked id="inlineCheckbox1" value="0"> 所有人可见
+                                <input type="radio" name="type" checked id="inlineCheckbox1" value="0"> 所有人可见
                             </label>
                             {{--<label class="checkbox-inline">--}}
                                 {{--<input type="radio" name="is_see" value="1"> 关注我的人可见--}}
                             {{--</label>--}}
                             <label class="checkbox-inline">
-                                <input type="radio" name="is_see" value="2"> 只有我可见
+                                <input type="radio" name="type" value="2"> 只有我可见
                             </label>
+                        </div>
                         </form>
                         </div>
                 </div>
@@ -77,35 +81,45 @@
                     return false;
                 }
 
-                $.ajax({
-                    type: "POST",
-                    url: "{{url('ashui/place/yifa')}}",
-                    data: {
-                        _token:'{{ csrf_token() }}',
-                        title:$("#title").val(),
-                        type:$("input[type='radio']:checked").val(),
-                        content:$("#div1").html(),
-                        user_id:uid,
-                    },
-                    dataType: "json",
-                    success: function(data){
-                        if(data.state==1){
-                            alert(data.msg)
-                            $("#title").val('')
-                            $("#div1").html('')
-                        }else{
-                            alert(data.msg)
-                        }
-                    }
-                });
+                {{--$.ajax({--}}
+                    {{--type: "POST",--}}
+                    {{--url: "{{url('ashui/place/yifa')}}",--}}
+                    {{--data: {--}}
+                        {{--_token:'{{ csrf_token() }}',--}}
+                        {{--title:$("#title").val(),--}}
+                        {{--type:$("input[type='radio']:checked").val(),--}}
+                        {{--content:$("#div1").html(),--}}
+                        {{--user_id:uid,--}}
+                    {{--},--}}
+                    {{--dataType: "json",--}}
+                    {{--success: function(data){--}}
+                        {{--if(data.state==1){--}}
+                            {{--alert(data.msg)--}}
+                            {{--$("#title").val('')--}}
+                            {{--$("#div1").html('')--}}
+                        {{--}else{--}}
+                            {{--alert(data.msg)--}}
+                        {{--}--}}
+                    {{--}--}}
+                {{--});--}}
             }
         </script>
 @endsection
 @section('script')
+
+    <script src="{{ URL::asset('ueditor/ueditor.config.js')}}"></script>
+    <script src="{{ URL::asset('ueditor/ueditor.all.js')}}"></script>
+    <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        $(function () {
-            var editor = new wangEditor('div1');
-            editor.create();
-        });
+        var ue = UE.getEditor('container', {
+            toolbars: [
+                ['fullscreen', 'source', 'undo', 'redo', 'bold','simpleupload', 'italic',
+                    'underline',
+                    'strikethrough',
+                    'subscript',]
+            ],
+            autoHeightEnabled: false,
+            initialFrameHeight:150,
+         });
     </script>
 @endsection
