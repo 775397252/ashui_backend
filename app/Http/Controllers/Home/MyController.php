@@ -113,5 +113,10 @@ class MyController extends LaravelController
         return view('home.my.messageboard')->withLight(6)->withShare($message)->withId($id)->withAttend($attend);
     }
 
+    public function deleteplace($id){
+        AshuiPlace::where('id', $id)->delete('users');
+        return redirect('my/index');
+    }
+
 
 }

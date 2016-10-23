@@ -12,6 +12,8 @@
                             <div class="myname">
                                 <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>
                             </div>
+                            <a href="{{url("my/deleteplace",[$v->id])}}" class="alert-danger">(删除)</a>
+
                             <div class="mytitle">
                                 {{$v->title}}
                             </div>

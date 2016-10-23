@@ -155,5 +155,6 @@ Route::get('/my/index', 'Home\MyController@index');
 Route::get('/my/attend', 'Home\MyController@attend');
 Route::any('/my/updateinfo', 'Home\MyController@updateInfo');
 Route::any('/my/messageboard/{id}', 'Home\MyController@MessageBoard');
+Route::any('/my/deleteplace/{id}', 'Home\MyController@deleteplace');
 
 
