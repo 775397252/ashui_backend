@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                         <label for="" class="col-sm-4 control-label"></label>
                                         <div class="col-sm-5">
-                                                <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="手机/邮箱">
+                                                <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="" placeholder="邮箱">
                                         </div>
                                 </div>
 

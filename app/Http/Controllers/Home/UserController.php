@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MailController;
 use App\Models\Background\Member;
 use App\Models\Home\AshuiMessageBoard;
 use Carbon\Carbon;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 use App\Models\Background\AshuiPlace;
-
+use Mail;
 use Session;
 use Validator;
 use DB;
@@ -33,12 +34,12 @@ class UserController extends Controller
                 $validator->errors()->add('field', '用户不存在!');
             }else if($request->get('password')!=$userinfo->password){
                 $validator->errors()->add('field', '账号或者错误!');
+            }else if($userinfo->status!=1){
+                $validator->errors()->add('field', '请先验证邮箱!');
             }
-
         });
         if ($validator->fails()) {
             return redirect('login')
-                
                     ->withErrors($validator)
                     ->withInput();
         }
@@ -46,8 +47,7 @@ class UserController extends Controller
         session(['member_id' =>$userinfo->id,'member_phone'=>$request->get('phone'),'member_name'=>$userinfo->username]);
         return redirect('ashui/top');
     }
-        return view('home.user.login')
-            ->withLoginActive('active');
+        return view('home.user.login')->withLoginActive('active');
     }
     public function Register(Request $request)
     {
@@ -76,14 +76,18 @@ class UserController extends Controller
             }
            // dd($request->all());
             $info=Member::create($request->all());
-            //新添加直接登录
             $userinfo=Member::where('email',$request->get('email'))->first();
-            session(['member_id' =>$userinfo->id,'member_name'=>$userinfo->username]);
-            return redirect('ashui/top');
+            $to = $userinfo->email;
+            Mail::send('emails.test',['name'=>$request->get('username'),'uid'=>$info->id],function($message) use($to){
+                $message ->to($to)->subject('激活邮件');
+            });
+            //新添加直接登录
+             //  $userinfo=Member::where('email',$request->get('email'))->first();
+            // session(['member_id' =>$userinfo->id,'member_name'=>$userinfo->username]);
+            return redirect('login');
             //if($info) return redirect('login');
         }
-        return view('home.user.register')
-            ->withRegisterActive('active');
+        return view('home.user.register')->withRegisterActive('active');
     }
     public function captcha($tmp)
     {
@@ -147,4 +151,12 @@ class UserController extends Controller
         $share=$query->where('user_id',$id)->paginate(2);
         return view('home.user.main')->withShare($share)->withId($id)->withLight(0);
     }
+     public function activeCount($id){
+         $res=DB::table('members')->where('id',$id)->update(['status' => 1]);
+         if($res){
+             echo "<h1>激活成功！</h1>";
+         }else{
+             echo "<h1>请不要再次激活！</h1>";
+         }
+     }
 }

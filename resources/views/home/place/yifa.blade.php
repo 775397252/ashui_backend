@@ -40,7 +40,7 @@
                 <div class="starter-template">
                     <label style="margin: 20px;color: #00be67;font-size: 24px" for="">Free to talk and Be yourself</label>
                     <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
-                        <form method="post" action="{{url('ashui/place/yifa')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{url('ashui/place/yifa')}}" enctype="multipart/form-data" onsubmit="return addclick()">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="form-group">
                                 <input type="text" name="title" style="font-size: 18px" class="form-control" id="title" placeholder="标题">
@@ -53,7 +53,7 @@
                             </div>
                             <input type="hidden" value="<?=session('member_id')?>" name="user_id" id="">
                     <div class="form-group">
-                    <input class="btn btn-default pull-right" onclick="addclick()" type="submit" value="发布">
+                    <input class="btn btn-default pull-right" type="submit" value="发布">
                             <label class="checkbox-inline">
                                 <input type="radio" name="type" checked id="inlineCheckbox1" value="0"> 所有人可见
                             </label>

@@ -105,7 +105,6 @@ Route::group(['middleware' =>'auth'], function () {
     Route::get('background/ashuiPlace/delete/{id}', 'Background\AshuiPlaceController@delete');
 
 
-
     Route::get('/storage/uploads/{aa}', function($aa){
         return response()->download(storage_path('uploads').'//'.$aa);
     });
@@ -156,5 +155,7 @@ Route::get('/my/attend', 'Home\MyController@attend');
 Route::any('/my/updateinfo', 'Home\MyController@updateInfo');
 Route::any('/my/messageboard/{id}', 'Home\MyController@MessageBoard');
 Route::any('/my/deleteplace/{id}', 'Home\MyController@deleteplace');
+//激活账号
+Route::get('ashui/activecount/{id}','Home\UserController@activeCount');
 
 
