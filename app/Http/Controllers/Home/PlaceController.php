@@ -105,4 +105,23 @@ class PlaceController extends LaravelController
             ->withTitle("阿水广场，世界在这里绽放")
             ->withShare($share)->withLight(2);
     }
+
+    public function detail($id){
+        $query=AshuiPlace::where('id',$id)->first();
+        return view('home.place.detail')
+            ->withV($query)
+            ->with('comments')
+            ->with('users')
+            ->withTitle("阿水广场，世界在这里绽放")
+            ->withLight(2);
+    }
+    public function top_detail($id){
+        $query=AshuiPlace::where('id',$id)->first();
+        return view('home.place.top_detail')
+            ->withV($query)
+            ->with('comments')
+            ->with('users')
+            ->withTitle("阿水头条，今天你是头条吗")
+            ->withLight(1);
+    }
 }

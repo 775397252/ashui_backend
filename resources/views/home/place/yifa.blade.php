@@ -63,6 +63,9 @@
                             <label class="checkbox-inline">
                                 <input type="radio" name="type" value="2"> 只有我可见
                             </label>
+                        <label class="checkbox-inline">
+                                <input type="radio" name="type" value="3"> 匿名发表
+                            </label>
                         </div>
                         </form>
                         </div>

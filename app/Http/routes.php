@@ -142,6 +142,12 @@ Route::get('/ashui/place/comment', 'Home\PlaceController@comment');
 Route::get('/ashui/place/click', 'Home\PlaceController@click');
 Route::any('/ashui/place/yifa', 'Home\PlaceController@yifa');
 Route::any('/ashui/place/especially', 'Home\PlaceController@especially');
+
+Route::any('/ashui/detail/{id}', 'Home\PlaceController@detail');
+Route::any('/ashui/top_detail/{id}', 'Home\PlaceController@top_detail');
+
+
+
 //留言版
 Route::any('/ashui/messageboard/{id}', 'Home\UserController@MessageBoard');
 Route::any('/ashui/main/{id}', 'Home\UserController@main');
@@ -155,6 +161,7 @@ Route::get('/my/attend', 'Home\MyController@attend');
 Route::any('/my/updateinfo', 'Home\MyController@updateInfo');
 Route::any('/my/messageboard/{id}', 'Home\MyController@MessageBoard');
 Route::any('/my/deleteplace/{id}', 'Home\MyController@deleteplace');
+
 //激活账号
 Route::get('ashui/activecount/{id}','Home\UserController@activeCount');
 //找回密码

@@ -1,18 +1,19 @@
 @extends('layouts.home_app_core')
 @section('content')
-    <link href="{{ URL::asset('Home/css/top.css')}}" rel="stylesheet">
-    <div class="clearfix"></div>
+    <link href="{{ URL::asset('Home/css/place.css')}}" rel="stylesheet">
+    @include('home.place.left')
+
+        <div class="clearfix"></div>
         <div class="container">
                 <div class="starter-template">
                         <div class="jumbotron" style="width: 80%;margin-left: 100px;margin-right: 100px;">
-                                @foreach($share as $k=>$v)
                                 <article style="margin: 10px" class="post">
                                     <div class="post-head" >
                                         <div class="myname">
                                             @if($v->type==3)
                                                 匿名
                                             @else
-                                                <a href="{{url('ashui/messageboard',[$v->users->id])}}">
+                                            <a href="{{url('ashui/messageboard',[$v->users->id])}}">
                                                     {{$v->users->username}}
                                                     @endif
                                                 </a>
@@ -24,7 +25,7 @@
                                     </div>
                                     <div class="text-left">
                                         <p>
-                                            {!! str_limit($v->content, $limit = 150, $end = '<a href="/ashui/top_detail/'.$v->id.'" target="blank">【查看更多】</a>') !!}
+                                            {!! $v->content !!}
                                         </p>
                                         {{--评论点赞--}}
                                         <div>
@@ -32,19 +33,21 @@
                                                 <span class="label label-danger">{{$v->click}}</span>
                                             </a>
                                             <!--<a href="/post/laravel-turns-five/" class="pull-right" style="margin-right: 100px;">阿水评论 <span class="badge">2</span></a>-->
-                                            <div class="accordion pull-right" style="margin-right: 100px;">
+                                            <div class="accordion pull-right" id="accordion2" class="" style="margin-right: 100px;">
                                                 <div class="accordion-group">
                                                     <div class="accordion-heading">
-                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$k}}">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
                                                             阿水评论
                                                         </a>
                                                     </div>
-                                                    <div id="collapse{{$k}}" class="accordion-body collapse " >
+                                                    <div id="collapse1" class=" collapse" style="height: 0px; ">
                                                         <div class="accordion-inner">
+                                                            <form>
                                                                 <div class="form-group">
                                                                     <textarea id="{{$v->id}}" name="" cols="60" rows=2 style="resize: none;"></textarea>
                                                                 </div>
                                                                 <input onclick="addcomment({{$v->id}})" class="btn btn-default pull-right" type="button" value="发布">
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -53,14 +56,12 @@
                                         <br>
                                         {{--<span class="label label-default">评论</span><br><br>--}}
                                         <div id="list_{{$v->id}}" class="clearfix col-xs-12">
-
                                             @foreach($v->comments as $kk=>$vv)
-                                                {{--<mark style="margin: 3px;">{{$vv->username}}:</mark>{{$vv->comment}} <br>--}}
-                                                <a onclick="javascript:1" style="text-align:left;text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
+                                                <a onclick="javascript:1" style="text-decoration:none;margin: 3px;">{{$vv->username}}:</a>{{$vv->comment}} <br>
                                             @endforeach
                                         </div>
 
-                                        {{--<a>查看所有>></a> <br>--}}
+                                        <div id="showall"></div> <br>
 
                                         <footer class="post-footer clearfix">
                                             <div class="pull-left tag-list">
@@ -72,10 +73,7 @@
                                     </div>
                                 </article>
                                 <hr>
-                                @endforeach
-                                <nav>
-                                    {{--{!! $share->render() !!}--}}
-                                </nav>
+
                         </div>
                 </div>
         </div><!-- /.container -->

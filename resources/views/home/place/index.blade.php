@@ -11,7 +11,13 @@
                                 <article style="margin: 10px" class="post">
                                     <div class="post-head" >
                                         <div class="myname">
-                                            <a href="{{url('ashui/messageboard',[$v->users->id])}}">{{$v->users->username}}</a>
+                                            @if($v->type==3)
+                                                匿名
+                                            @else
+                                            <a href="{{url('ashui/messageboard',[$v->users->id])}}">
+                                                    {{$v->users->username}}
+                                                    @endif
+                                                </a>
                                         </div>
                                         <div class="mytitle">
                                             {{$v->title}}
@@ -20,7 +26,7 @@
                                     </div>
                                     <div class="text-left">
                                         <p>
-                                            {!! $v->content !!}
+                                            {!! str_limit($v->content, $limit = 150, $end = '<a href="/ashui/detail/'.$v->id.'" target="blank">【查看更多】</a>') !!}
                                         </p>
                                         {{--评论点赞--}}
                                         <div>
