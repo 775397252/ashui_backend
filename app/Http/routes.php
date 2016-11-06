@@ -157,5 +157,7 @@ Route::any('/my/messageboard/{id}', 'Home\MyController@MessageBoard');
 Route::any('/my/deleteplace/{id}', 'Home\MyController@deleteplace');
 //激活账号
 Route::get('ashui/activecount/{id}','Home\UserController@activeCount');
+//找回密码
+Route::any('/findpassword','Home\UserController@findPassword');
 
 

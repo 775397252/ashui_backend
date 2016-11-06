@@ -159,4 +159,40 @@ class UserController extends Controller
              echo "<h1>请不要再次激活！</h1>";
          }
      }
+
+
+    public function findPassword(Request $request){
+        if($request->isMethod('post')){
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'captcha' => 'required|max:255',
+            ],[
+                'required' => ':attribute 必须填写。',
+            ])->after(function($validator)use($request) {
+                if (Session::get('captcha')!= $request->get('captcha')) {
+                    $validator->errors()->add('field', '验证码错误!');
+                }
+            });
+            if ($validator->fails()) {
+                return redirect('findpassword')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            $userinfo=Member::where('email',$request->get('email'))->first();
+            if(!$userinfo){
+                return redirect('findpassword')
+                    ->withErrors('用户信息错误')
+                    ->withInput();
+            }
+            $to=$request->get('email');
+            Mail::send('emails.password',['name'=>$userinfo->name,'password'=>$userinfo->password],function($message) use($to){
+                $message ->to($to)->subject('测试邮件');
+            });
+            return redirect('findpassword')
+                ->withErrors('请查看邮件')
+                ->withInput();
+            die;
+        }
+        return view('home.user.findpassword')->withFindPasswordActive('active');
+    }
 }

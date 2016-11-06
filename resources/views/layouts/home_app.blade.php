@@ -28,6 +28,7 @@
                     <li class="{{$youke_active or ''}}"><a href="{{url('ashui/top')}}">游客</a></li>
                     <li class="{{$register_active or ''}}"><a href="{{url('register')}}">注册</a></li>
                     <li class="{{$login_active or ''}}"><a href="{{url('login')}}">登录</a></li>
+                    <li class="{{$findPasswordActive or ''}}"><a href="{{url('findpassword')}}">找回密码</a></li>
                 @endif
             </ul>
         </div>
